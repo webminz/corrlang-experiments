@@ -1,0 +1,328 @@
+id,firstname,lastname,email,mobile no.,street address,postal code,city
+105757,Gunnar,Sørensen,gunnar_s@gmail.com,91235555,Bromstadveien 10,7047,Trondheim
+120468,Heidi,Hansen,heidi.h@gmail.com,92341234,Stavangerveien 10,4014,Stavanger
+122324,Øyvind,Engebretsen,oyvind_e@gmail.com,44565555,Frodegata 5,7067,Trondheim
+124709,Grethe,Larsen,grethe.l@protonmail.com,46782233,Hjalmar Brantings vei 10,5143,Fyllingsdalen
+124785,Gunnar,Eriksen,gunnar.e@live.no,91230000,Fosswinckels gate 5,5007,Bergen
+124969,Ingeborg,Svendsen,ingeborg.s@online.no,40121212,Storgata 15,4307,Sandnes
+125126,Odd,Bakken,odd.bakken@protonmail.com,90123456,Parkveien 53,256,Oslo
+128228,Kristina,Pettersen,kristina.p@gmail.com,42340000,Nordahl Bruns gate 1,5014,Bergen
+129349,Kjell,Svendsen,kjell.s@live.no,45671234,Industrigata 40,357,Oslo
+129973,Solfrid,Knudsen,solfrid.k@online.no,97655656,Ålgårdshaugen 1,4330,Ålgård
+130104,Jan,Moen,jan.moen.pro@gmail.com,94321098,Bygdøylund 5,286,Oslo
+136945,Vigdis,Johansen,vigdis_j@online.no,95439999,Brandasundvegen 10,5440,Mosterhamn
+137088,Kari,Rasmussen,kari_r@gmail.com,91239988,Michael Krohns gate 20,5057,Bergen
+141942,Hege,Sætre,hege_s@gmail.com,97659999,Kulleseidvegen 10,5437,Finnås
+141963,Marit,Kristiansen,m.kristiansen@altibox.no,47654321,Kirkeveien 50,368,Oslo
+146742,Magnus,Strand,magnus_s@getmail.no,98765555,Sirkus Shopping 1,7044,Trondheim
+155435,Else,Nygård,else_n@protonmail.com,95431212,Strandgata 10,4307,Sandnes
+156083,Bjørg,Engebretsen,bjorg.e@online.no,98765656,Hoveveien 1,4306,Sandnes
+156462,Ole,Iversen,ole_i@online.no,40123322,Strandgaten 10,5013,Bergen
+157509,Trine,Knudsen,trine.k@gmail.com,91234455,Hopsvatnet 5,5232,Paradis
+159990,Øyvind,Bakken,oyvind_b@online.no,44567777,Skaalavegen 10,5470,Rosendal
+167297,Arne,Lunde,arne.lunde@altibox.no,46780000,Sydnesplassen 1,5007,Bergen
+170589,Stian,Johnsen,stian_j@altibox.no,44567766,Nobels gate 12,268,Oslo
+173495,Magnus,Jensen,magnus.j@altibox.no,98760000,Øvre Sandviksveien 1,5035,Bergen
+174580,Astrid,Amundsen,astrid.a@altibox.no,94323333,Sævegen 10,5412,Stord
+176117,Heidi,Sande,heidi.s@altibox.no,92348888,Sandbrekkevegen 1,5225,Nesttun
+178229,Bodil,Eide,bodil.e@online.no,94324455,Ulsmågvegen 10,5224,Nesttun
+183024,Tore,Mikkelsen,tore_m@outlook.no,43215656,Ole Nielsen vei 5,4330,Ålgård
+183563,Tore,Birkeland,tore_b@online.no,43219988,Løbergsveien 5,5055,Bergen
+188174,Gunnar,Lunde,gunnar_l@outlook.com,91237777,Nordtveitvegen 5,5647,Baldersheim
+193979,Bjørg,Birkeland,bjorg.b@gmail.com,98763333,Sæbøvegen 1,5458,Halsnøy-Kloster
+196012,Øyvind,Haugen,oyvind.h@gmail.com,44560000,Professor Hansteens gate 1,5006,Bergen
+196881,Kari,Sæther,kari.s@online.no,91233333,Borggata 10,5417,Stord
+209120,Monica,Holm,m.holm92@getmail.no,94324433,Professor Dahls gate 30,353,Oslo
+210327,Beate,Hansen,beate.h@online.no,93454455,Kloppedalsvegen 5,5232,Paradis
+211739,Else,Amundsen,else.a@live.no,95435555,Sorgenfriveien 1,7031,Trondheim
+212574,Anne,Vold,anne.v@icloud.com,90123434,Gandveien 1,4322,Sandnes
+213753,Håkon,Berg,haakon.b@online.no,90125555,Bontveitvegen 1,5229,Kalandseidet
+215646,Ragnhild,Myhre,ragnhild.m@protonmail.com,45675555,Falkenborgvegen 1,7044,Trondheim
+225832,Vigdis,Holm,vigdis.h@gmail.com,95434455,Elvenesvegen 5,5225,Nesttun
+232551,Ellen,Johnsen,ellen_j@live.no,92346666,Børtveitvegen 1,5415,Stord
+232892,Kjellfrid,Hansen,kjellfrid.h@online.no,42342222,Mildevegen 5,5259,Hjellestad
+233230,Alf,Amundsen,alf_a@outlook.com,45675656,Austråttveien 5,4306,Sandnes
+237254,Ingunn,Andersen,ingunn.a@altibox.no,90121234,Kirkegata 1,4006,Stavanger
+241819,Grete,Eide,grete.e@gmail.com,97654433,Jacob Aalls gate 1,364,Oslo
+245486,Atle,Birkeland,atle_b@online.no,93455555,Leangen allé 5,7044,Trondheim
+250527,Terje,Hansen,terje.h82@icloud.com,44568899,Møllendalsveien 10,5009,Bergen
+257695,Ove,Lund,ove_l@online.no,45673333,Fossegrenda 5,7038,Trondheim
+262162,Tom,Andersen,tom.a@getmail.no,42347766,Frognerveien 25,263,Oslo
+262577,Eirik,Moe,eirik_m@online.no,45671111,Innherredsveien 1,7014,Trondheim
+269829,Terje,Nilsen,terje_n@live.no,44561111,Elgeseter gate 1,7030,Trondheim
+270934,Mona,Bakke,mona_b@live.no,95439988,Ulriksdal 10,5009,Bergen
+271330,Jarle,Eriksen,jarle_e@outlook.no,97654567,Hillevågsveien 15,4016,Stavanger
+272290,Solfrid,Myhre,solfrid.m@altibox.no,97659988,Damsgårdsveien 10,5058,Bergen
+274051,Merete,Lund,merete_l@outlook.no,49015555,Samnøyvegen 5,5641,Fusa
+276188,Eirik,Sætre,eirik_s@icloud.com,91232233,Grimseidvegen 50,5239,Rådal
+278860,Sigrid,Olsen,sigrid.o@protonmail.com,93452222,Hjellestadvegen 10,5259,Hjellestad
+279654,Odd,Vold,odd_v@outlook.no,40123333,Nattrutekaien 1,5411,Stord
+282022,Gunnar,Evensen,gunnar_e@altibox.no,91231212,Langegata 10,4306,Sandnes
+283645,Nina,Pettersen,nina.p@online.no,40124567,Lagårdsveien 1,4010,Stavanger
+283917,Trine,Wang,trine_w@online.no,91239999,Melandsvegen 1,5430,Bremnes
+287425,Synnøve,Berg,synnove.b@gmail.com,43214567,Marieroalléen 1,4017,Stavanger
+293575,Turid,Lunde,turid.l@live.no,41237890,Bedriftsveien 5,4313,Sandnes
+297529,Ragnhild,Solberg,ragnhild.s@outlook.no,45671212,Roald Amundsens vei 1,4307,Sandnes
+298183,Solveig,Nygård,solveig.n@icloud.com,97651234,Middelthuns gate 17,368,Oslo
+299750,May,Isaksen,may_i@live.no,98762222,Espehaugen 10,5258,Blomsterdalen
+305923,Ivar,Nygård,ivar_n@altibox.no,49015544,Kaigaten 5,5016,Bergen
+307513,Sigrid,Dahl,sigrid.d@outlook.com,93453333,Osloveien 1,7017,Trondheim
+312387,Torstein,Johansen,torstein_j@gmail.com,94322233,Bjørgeveien 10,5141,Fyllingsdalen
+313450,Ingrid,Andreassen,ingrid.a@protonmail.com,92346666,Kobbes gate 1,7042,Trondheim
+314365,Marit,Halvorsen,m.halvorsen@gmail.com,92349900,Inkognitogata 14,258,Oslo
+318283,Atle,Bakken,atle_b@gmail.com,93451212,Julie Eges gate 5,4306,Sandnes
+318697,Arve,Olsen,arve_o@outlook.no,46789999,Grindheim 1,5440,Mosterhamn
+319236,Lars,Strand,lars.strand.x@outlook.no,42341234,Majorstuveien 25,367,Oslo
+320965,Lene,Solberg,lene.s@outlook.com,97653322,Klosteret 5,5005,Bergen
+329531,Merete,Rasmussen,merete.r@live.no,49014444,Ladebekken 5,7041,Trondheim
+330710,Ingunn,Pettersen,ingunn.p@gmail.com,90122222,Sluppenvegen 1,7037,Trondheim
+332590,Gro,Sæther,gro.s@gmail.com,93458899,Øvregaten 15,5003,Bergen
+333425,Wenche,Pettersen,w.pettersen@online.no,95437766,Halvdan Svartes gate 5,268,Oslo
+333661,Torstein,Gundersen,torstein_g@outlook.no,94323333,Søndre gate 1,7011,Trondheim
+334083,Ove,Holm,ove.holm@online.no,45672233,Skjoldvegen 25,5221,Nesttun
+342820,Grethe,Bakken,grethe.b@altibox.no,46783333,Pirbrua 1,7010,Trondheim
+343493,Else,Moen,else_m@icloud.com,95430000,Dokkeveien 5,5007,Bergen
+346938,Harald,Birkeland,h.birkeland@gmail.com,40121234,Kirkeveien 64,366,Oslo
+346953,Leif,Johnsen,leif_j@telenor.no,45674433,Neuberggata 15,367,Oslo
+346997,Torill,Myhre,torill_m@live.no,94321212,Kirkegata 5,4307,Sandnes
+355859,Solfrid,Lie,solfrid.l@gmail.com,97653333,Vikevegen 5,5414,Stord
+357294,Gudrun,Amundsen,gudrun_a@online.no,97658899,Amalie Skrams vei 12,5036,Bergen
+360354,Heidi,Pettersen,heidi_pet@outlook.com,40123456,Prinsens gate 15,152,Oslo
+360540,Trond,Sætre,trond_s@getmail.no,49018989,Bakkegata 1,7014,Trondheim
+362502,Roar,Hansen,roar.h@gmail.com,45677766,Arbins gate 2,253,Oslo
+364909,Merete,Kristiansen,merete.k@icloud.com,49013344,Forskjønnelsen 5,5018,Bergen
+367414,Ove,Johansen,ove_j@getmail.no,45672222,Ådlandvegen 5,5258,Blomsterdalen
+368599,Turid,Eriksen,turid.e@protonmail.com,41235555,Osvegen 10,5229,Kalandseidet
+372474,Gøril,Lunde,goril_l@gmail.com,93453322,Innsiktsveien 12,5003,Bergen
+372673,Rune,Bakke,rune_b@outlook.com,45678899,Skostredet 5,5017,Bergen
+379245,Erik,Jensen,erik.jensen.nor@icloud.com,93456789,Sørkedalsveien 10,369,Oslo
+383655,Magnus,Iversen,magnus_i@online.no,98761212,Gamle Stokkavei 5,4313,Sandnes
+387697,Atle,Haugen,atle.h@altibox.no,93457777,Strandvikvegen 10,5643,Strandvik
+387758,May,Nilsen,may.n@outlook.com,98764567,Løkkeveien 15,4008,Stavanger
+387966,Vibeke,Pedersen,v.pedersen88@protonmail.com,91237766,Behrens gate 4,265,Oslo
+394197,Ellen,Vold,ellen.v@protonmail.com,92341111,Ibsens gate 10,5052,Bergen
+394343,Ragnhild,Hagen,ragnhild_h@icloud.com,45677777,Sævareidvegen 5,5645,Sævareid
+394805,Jonny,Bakke,jonny_b@protonmail.com,42343333,Leirvikvegen 1,5411,Stord
+395146,Hege,Larsen,hege.l@online.no,97651111,Strindvegen 5,7034,Trondheim
+396534,Ingeborg,Berg,ingeborg_b@getmail.no,40120000,Hans Holmboes gate 10,5007,Bergen
+396583,Torstein,Kristiansen,torstein_k@online.no,94322222,Fanaflaten 1,5244,Fana
+397215,Kirsti,Helle,k.helle@online.no,90128877,Trudvangveien 5,363,Oslo
+397456,Signe,Isaksen,signe.i@altibox.no,90129900,Observatoriegata 2,254,Oslo
+404128,Kari,Hansen,kari.h@getmail.no,91235656,Bogafjellveien 10,4324,Sandnes
+407872,Mette,Dahl,m.dahl94@outlook.no,49876543,Frognerveien 12,263,Oslo
+410224,Merete,Gundersen,merete.g@protonmail.com,49017890,Stokkamyrveien 1,4313,Sandnes
+412755,Mona,Andreassen,mona.a@outlook.com,95433333,Åsamyrane 5,5415,Stord
+413387,Sissel,Olsen,sissel.o@live.no,44562233,Oasen Senter 1,5147,Fyllingsdalen
+413579,Terje,Lunde,terje_l@outlook.no,44564455,Bratthammarane 1,5225,Nesttun
+414966,Anita,Berg,anita_berg@gmail.com,42345678,Munkedamsveien 35,250,Oslo
+425287,Sigrid,Wang,sigrid.w@outlook.no,93452233,Fanavegen 10,5221,Nesttun
+427299,Hanne,Pedersen,hanne.p.1990@gmail.com,48901234,Grenseveien 60,663,Oslo
+428099,Stein,Lie,stein_l@altibox.no,49013434,Skeiane 5,4307,Sandnes
+430259,Sverre,Sæther,sverre_s@getmail.no,46789988,Årstadveien 15,5009,Bergen
+431045,Hilde,Engebretsen,hilde.e@outlook.no,90121111,Fritz C. Riebers vei 1,5052,Bergen
+435073,Bodil,Haugen,bodil.h@online.no,98763322,Briskebyveien 40,259,Oslo
+436957,Ingrid,Jacobsen,ingrid_j@online.no,92346655,Olav Kyrres gate 10,5014,Bergen
+440870,Astrid,Vold,a.vold99@gmail.com,95431234,Harald Hårfagres gate 2,363,Oslo
+450283,Helge,Pedersen,helge_p@online.no,49011234,Klubbgata 10,4006,Stavanger
+455977,Tore,Engebretsen,tore_e@icloud.com,43213333,Heiane 1,5412,Stord
+456688,Jan,Hansen,jan_h@altibox.no,40121111,Dybdahls veg 1,7051,Trondheim
+459135,Lars,Gundersen,lars.g@outlook.com,41236655,Vaskerelven 5,5014,Bergen
+459229,Ingeborg,Bakke,ingeborg.b@icloud.com,40125555,Valentinlyst 1,7047,Trondheim
+459770,Knut,Andersen,knut.andersen@telenor.no,92345678,Thorvald Meyers gate 11,555,Oslo
+462901,Einar,Mikkelsen,einar.m@altibox.no,42344433,Sorgenfrigata 10,365,Oslo
+463971,Sverre,Sæther,sverre_s@outlook.com,44561234,Sørkedalsveien 1,369,Oslo
+467257,Morten,Wang,morten_w@gmail.com,41238989,Kjøpmannsgata 1,7013,Trondheim
+467737,Reidar,Amundsen,reidar_a@protonmail.com,41238877,Hammerstads gate 21,363,Oslo
+467861,Arve,Knudsen,arve.k@online.no,46788899,Danmarks plass 1,5054,Bergen
+469724,Liv,Iversen,liv_i@getmail.no,43217777,Rosendalsvegen 1,5470,Rosendal
+474014,Magnus,Dahl,magnus.d@gmail.com,98767777,Eikelandsvegen 1,5640,Eikelandsosen
+474839,Oddmund,Aas,oddmund_a@gmail.com,41231122,Kanalveien 10,5068,Bergen
+480482,Siv,Berg,siv.berg@gmail.com,92342211,President Harbitz' gate 2,259,Oslo
+481251,Dag,Wang,dag_wang@protonmail.com,44564433,Oscars gate 50,258,Oslo
+481922,Grethe,Johnsen,grethe.j@live.no,46782222,Hamrevegen 1,5244,Fana
+490064,Anne,Strand,anne.s@online.no,90121111,Sundesvegen 1,5450,Sundei-Sunnhordland
+493663,Jan,Sande,jan.s@outlook.com,40129999,Gisøyvegen 5,5430,Bremnes
+495838,Eirik,Andreassen,eirik.a@altibox.no,45674455,Øvsttunvegen 10,5223,Nesttun
+496099,Kåre,Johnsen,kaare_j@outlook.com,42344455,Tjernvegen 1,5232,Paradis
+508693,Harald,Bø,harald_b@icloud.com,44565656,Kongens gate 10,7011,Trondheim
+509405,Jarle,Lunde,jarle_l@protonmail.com,97653333,Schultz gate 1,7013,Trondheim
+509424,Kristin,Kristiansen,k.kristiansen@outlook.no,97657766,Gabels gate 14,272,Oslo
+511409,Torill,Lie,torill.l@outlook.com,94325555,Moholt 1,7050,Trondheim
+511429,Vigdis,Kristiansen,vigdis.k@getmail.no,95431111,Holtermanns veg 5,7030,Trondheim
+513364,Helge,Eriksen,helge_e@icloud.com,49012222,Tempevegen 10,7037,Trondheim
+515862,Eirik,Eide,eirik.e@gmail.com,45679999,Bømlovegen 100,5430,Bremnes
+518341,Marit,Lie,marit_l@getmail.no,91238899,Bontelabo 2,5003,Bergen
+518841,Svein,Hagen,svein.hagen.65@live.no,96543210,Niels Juels gate 38,257,Oslo
+525353,Eskil,Rasmussen,eskil_r@outlook.com,97651212,Jernbaneveien 1,4306,Sandnes
+526936,Magne,Andersen,magne_a@outlook.com,43211111,Høgskoleringen 1,7034,Trondheim
+527148,Ingrid,Johansen,ingrid_j@gmail.com,41567890,Storgata 5,155,Oslo
+528962,Audun,Lunde,audun_l@live.no,43214433,Suhms gate 5,362,Oslo
+536965,Sindre,Jacobsen,sindre.j@icloud.com,42343322,Bryggen 1,5003,Bergen
+537410,Geir,Johnsen,geir.j.johnsen@online.no,95678901,Dronningens gate 8,152,Oslo
+539964,Sissel,Dahl,sissel.d@altibox.no,44564567,Boganesveien 10,4032,Stavanger
+540257,Hege,Aas,hege.aas@getmail.no,97654455,Skjoldhøgda 1,5222,Nesttun
+541352,Hilde,Mikkelsen,hilde_m@protonmail.com,90126666,Kvernavatnet 1,5419,Fitjar
+541466,Frank,Hansen,frank.h@getmail.no,95432233,Folke Bernadottes vei 5,5147,Fyllingsdalen
+542827,Else,Sandvik,else.s@outlook.no,95437777,Dimmelsvikvegen 1,5472,Dimmelsvik
+548125,Lars,Rasmussen,lars_r@altibox.no,41231111,Valenvegen 10,5451,Valen
+551029,Helge,Eide,helge_e@getmail.no,49011122,Wergelandsalléen 5,5067,Bergen
+552256,Kristina,Sandvik,kristina.s@icloud.com,42341212,Olav Kyrres gate 1,4307,Sandnes
+553526,Sissel,Iversen,sissel.i@gmail.com,44563333,Carl Johans gate 10,7010,Trondheim
+560731,Per,Iversen,per_i@online.no,92341098,Rosenkrantz' gate 22,160,Oslo
+565977,Arne,Evensen,arne.e@gmail.com,46787777,Seimsvegen 5,5472,Dimmelsvik
+571935,Olav,Lie,olav.lie@live.no,46781234,Suhms gate 10,362,Oslo
+576183,Anne,Sande,a.sande@online.no,95434433,Riddervolds gate 10,258,Oslo
+578145,Torill,Solberg,torill.s@protonmail.com,94327777,Malmangervegen 5,5470,Rosendal
+578310,Nina,Andersen,nina_a@gmail.com,40122222,Skipanesvegen 1,5259,Hjellestad
+579188,Ellen,Holm,ellen.h@outlook.com,92348989,Fjordgata 10,7010,Trondheim
+581461,Berit,Sørensen,berit.s@getmail.no,93453333,Eidsvikvegen 10,5454,Sæbøvik
+581972,Eirik,Haugen,eirik_h@live.no,91233333,Prinsens gate 1,7012,Trondheim
+582908,Elin,Strand,elin.s@outlook.no,92345544,Parkveien 1,5007,Bergen
+584289,Astrid,Nygård,astrid.n@outlook.com,94329988,St. Olavs vei 10,5052,Bergen
+585972,Siv,Helle,siv_helle@icloud.com,98764455,Nesttunhaugen 1,5221,Nesttun
+586217,Hilde,Sande,hilde.s@live.no,90128989,Olav Tryggvasons gate 5,7011,Trondheim
+594202,Hege,Dahl,hege_d@getmail.no,90122211,Holtegata 1,355,Oslo
+596309,Magne,Bø,magne_b@protonmail.com,43214455,Midtunhaugen 5,5224,Nesttun
+598215,Mona,Eide,mona.e@altibox.no,95435656,Munkegata 1,7013,Trondheim
+600368,Kari,Lunde,k.lunde@altibox.no,44567890,Strandpromenaden 1,252,Oslo
+600415,Jarle,Moe,jarle_m@online.no,97652233,Kokstadvegen 25,5257,Kokstad
+607711,Geir,Nilsen,geir_n@online.no,40127766,Lille Frogner allé 5,263,Oslo
+607881,Oddmund,Larsen,oddmund_l@icloud.com,41231234,Breigata 5,4006,Stavanger
+610281,Gunnar,Sørensen,g.sorensen.75@altibox.no,43211234,Essendrops gate 5,368,Oslo
+612247,Kjellfrid,Hagen,kjellfrid_h@gmail.com,42343333,St. Olavs gate 10,7012,Trondheim
+614689,Ragnhild,Aas,r.aas@online.no,91234433,Fagerborggata 20,360,Oslo
+619377,Vidar,Moen,vidar_m@gmail.com,92347890,Vestre Svanholmen 1,4313,Sandnes
+624341,Randi,Gundersen,randi.g@altibox.no,91233322,Torgallmenningen 1,5012,Bergen
+633304,Grethe,Haugen,grethe.h@outlook.com,46784567,Grenseveien 5,4033,Stavanger
+635656,Sverre,Hansen,sverre_h@gmail.com,46783333,Sponavikvegen 10,5415,Stord
+635710,Randi,Bakke,randi_b@online.no,94321234,Fridtjof Nansens vei 12,369,Oslo
+640450,Magne,Halvorsen,magne.h@live.no,43219999,Vikasjøen 1,5437,Finnås
+640562,Torstein,Lund,torstein_l@icloud.com,94324567,Gandsfjordveien 5,4018,Stavanger
+645191,Eli,Larsen,eli_larsen@live.no,93457766,Niels Juels gate 10,272,Oslo
+645798,Laila,Olsen,laila.o@outlook.com,98767766,Cort Adelers gate 12,254,Oslo
+648223,Vidar,Andersen,vidar.a@online.no,92343344,Tveiteråsvegen 5,5232,Paradis
+650315,Kjellfrid,Karlsen,kjellfrid_k@getmail.no,42344567,St. Olavs gate 5,4005,Stavanger
+654721,Berit,Gundersen,berit.g@icloud.com,46789012,Haakon VIIs gate 9,161,Oslo
+655883,Torbjørn,Moe,torbjorn.moe@icloud.com,41239900,Hansteens gate 5,253,Oslo
+657313,Morten,Lie,morten_l@online.no,41231111,Bjørnsons gate 5,5052,Bergen
+657718,Morten,Olsen,m.olsen.88@outlook.no,98765432,Bogstadveien 22,355,Oslo
+662315,Nina,Halvorsen,nina.h@altibox.no,40122233,Sandslihaugen 10,5254,Sandsli
+664934,Astrid,Aas,astrid.a@gmail.com,94325656,Krambugata 1,7011,Trondheim
+666748,Eskil,Sæther,eskil_s@altibox.no,97655555,Anders Estenstads veg 1,7048,Trondheim
+672292,Øyvind,Birkeland,oyvind.b@getmail.no,44561212,Solaveien 1,4307,Sandnes
+675422,Jonny,Svendsen,jonny_s@outlook.no,42349988,Lotheveien 5,5031,Bergen
+678264,Ragnhild,Karlsen,ragnhild_k@online.no,45670000,Ladegårdsgaten 10,5035,Bergen
+679333,Eva,Rasmussen,eva.rasmussen89@online.no,93451234,Vibes gate 12,356,Oslo
+679428,Jarle,Pedersen,jarle.p@icloud.com,97652222,Søvikvegen 5,5259,Hjellestad
+681192,Vidar,Sandvik,vidar_s@online.no,92344444,Stjørdalsveien 1,7041,Trondheim
+681710,Beate,Isaksen,beate.i@outlook.no,93451111,Beddingen 5,7014,Trondheim
+681997,Stein,Myhre,stein_m@outlook.com,49011111,Halsnøyvegen 5,5457,Halsnøy-Kloster
+685722,Sveinung,Bø,sveinung.bo@outlook.com,40124433,Hertzbergs gate 5,360,Oslo
+686728,Lars,Sæther,lars_s@gmail.com,41233434,Sandnesveien 10,4322,Sandnes
+692675,Ingrid,Svendsen,ingrid_s@protonmail.com,95433322,Vestre Torggaten 10,5015,Bergen
+693541,Arne,Hansen,arne.hansen82@online.no,90234567,Karl Johans gate 12,154,Oslo
+699933,Jonny,Andreassen,jonny_a@live.no,42345656,Iglemyrveien 1,4321,Sandnes
+708205,Jan,Mikkelsen,jan_m@live.no,40124455,Sætervegen 10,5232,Paradis
+709291,Ketil,Engebretsen,ketil.e@protonmail.com,40128899,Skutevikstorget 1,5032,Bergen
+713774,Inger,Engebretsen,inger.e@getmail.no,92348877,Gydas vei 14,363,Oslo
+720219,Torill,Hagen,torill.h@outlook.no,94320000,Thormøhlens gate 10,5006,Bergen
+721289,Eirik,Johnsen,eirik_j@protonmail.com,91234567,Muségata 10,4010,Stavanger
+722535,Arne,Sørensen,arne.s@online.no,46781212,Oalsgata 15,4311,Sandnes
+723231,Ingrid,Bakke,ingrid_b@outlook.no,92343434,Ålgårdsveien 1,4325,Sandnes
+724995,Andreas,Jensen,a.jensen.pro@gmail.com,43217766,Drammensveien 50,271,Oslo
+725871,Arve,Jensen,arve_j@protonmail.com,46781111,Vestre Rosten 10,7072,Heimdal
+727448,Jørgen,Lund,jorgen.l@live.no,41232211,Eilert Sundts gate 10,259,Oslo
+731844,Ingeborg,Jacobsen,ingeborg.j@gmail.com,40127777,Sundvordsvegen 1,5648,Sundvor
+733710,Magne,Hagen,magne.hagen@protonmail.com,49012211,Uranienborgveien 20,351,Oslo
+736623,Nina,Moen,nina.m@getmail.no,40123333,Erling Skakkes gate 5,7013,Trondheim
+737849,Turid,Pedersen,turid_p@outlook.no,41233344,Storetveitvegen 15,5067,Bergen
+740621,Trond,Amundsen,trond.a@gmail.com,49011111,Fanavegen 50,5232,Paradis
+741705,Morten,Knudsen,morten.k@getmail.no,41236666,Fitjarvegen 100,5419,Fitjar
+742908,Harald,Helle,harald_h@online.no,44563333,Langelandvegen 1,5412,Stord
+744328,Eskil,Gundersen,eskil_g@live.no,97657777,Uskedalsvegen 10,5463,Uskedalen
+752433,Espen,Vold,espen_v@live.no,42348899,Sandbrogaten 2,5003,Bergen
+757516,Siv,Bø,siv_bo@outlook.no,98769999,Vistvegen 1,5419,Fitjar
+762092,Ingrid,Svendsen,ingrid_s@icloud.com,92341111,Baugstranda 1,5474,Nordre-Vatne
+763083,Ingunn,Halvorsen,ingunn_h@outlook.com,90128888,Fleslandsvegen 5,5258,Blomsterdalen
+763410,Håkon,Nilsen,haakon_n@gmail.com,90123344,Kalfarveien 10,5018,Bergen
+765302,Frank,Karlsen,frank_k@gmail.com,95432222,Stendvegen 10,5244,Fana
+767573,Håkon,Svendsen,haakon_s@gmail.com,90124444,Haakon VII gate 1,7041,Trondheim
+773285,Harald,Sørensen,harald.s@gmail.com,44569988,Haukelandsveien 1,5009,Bergen
+778368,Beate,Karlsen,beate.k@icloud.com,94327766,Skarpsnoalléen 2,273,Oslo
+778701,Bodil,Moe,bodil_m@getmail.no,94329999,Langevåg 1,5443,Bømlo
+781518,Tor,Sandvik,tor.s@gmail.com,49012345,Wergelandsveien 15,167,Oslo
+782925,Heidi,Karlsen,heidi.k@online.no,92342222,Østre Rosten 1,7075,Tiller
+784245,Arne,Helle,arne_h@getmail.no,46785555,Båtsmannsgata 5,7042,Trondheim
+786452,Tove,Knudsen,tove.k.85@icloud.com,93454433,Arbos gate 2,368,Oslo
+789285,Bjørg,Bakken,bjorg.b@getmail.no,98769988,Verftsgaten 1,5011,Bergen
+792823,Oddmund,Sætre,oddmund.s@online.no,41238888,Grimseidvegen 100,5239,Rådal
+797747,Bjørn,Nilsen,bjorn84@getmail.no,91234561,Ekebergveien 120,1178,Oslo
+800538,Kåre,Holm,kaare.h@altibox.no,42349999,Hollundsdalen 5,5430,Bremnes
+800682,Synnøve,Jacobsen,synnove.j@online.no,43213333,Thomas Angells gate 10,7011,Trondheim
+807648,Frank,Hagen,frank_h@online.no,95434567,Forusbeen 1,4033,Stavanger
+810048,Ingunn,Bø,ingunn.bo@live.no,90121122,Inndalsveien 15,5063,Bergen
+812292,Alf,Sandvik,alf_s@protonmail.com,45679988,Nedre Stølen 5,5003,Bergen
+814212,May,Lunde,may.l@protonmail.com,98762233,Nesttunvegen 100,5221,Nesttun
+816463,Liv,Vold,liv_v@online.no,43215555,Brøsetveien 10,7048,Trondheim
+819041,Kjersti,Birkeland,k.birkeland@icloud.com,90125544,Småstrandgaten 3,5014,Bergen
+822564,Håkon,Jacobsen,haakon_j@getmail.no,90127890,Luramyrveien 10,4313,Sandnes
+823368,Trine,Haugen,trine_h@telenor.no,43210987,Skovveien 2,257,Oslo
+825006,Roald,Myhre,roald_m@gmail.com,41235544,Christies gate 12,5015,Bergen
+825988,Silje,Larsen,silje.l85@live.no,45678901,Vogts gate 45,474,Oslo
+827503,Odd,Strand,odd.strand@icloud.com,40129988,Carl Konows gate 15,5034,Bergen
+831221,Sverre,Lunde,sverre_l@online.no,46785656,Dronningens gate 15,7012,Trondheim
+833359,Kristina,Nygård,kristina.n@outlook.no,42345555,Thoning Owesens gate 1,7044,Trondheim
+836569,Arve,Wang,arve_w@icloud.com,46784455,Hardangervegen 10,5226,Nesttun
+837444,Anne,Iversen,anne_i@gmail.com,90126655,Baneveien 10,5010,Bergen
+838509,Berit,Evensen,berit.e@online.no,93459988,Krohns gate 10,5031,Bergen
+840549,Odd,Johnsen,odd_j@protonmail.com,40125656,Figgjoveien 1,4332,Figgjo
+841086,Trond,Aas,trond_aas@online.no,49016666,Vestbøstadvegen 5,5419,Fitjar
+843971,Sigrid,Jensen,sigrid.j@live.no,93454567,Kannikgata 1,4008,Stavanger
+843990,Eskil,Lund,eskil_l@protonmail.com,97650000,Møhlenprisbakken 1,5006,Bergen
+844766,Frank,Solberg,frank_s@icloud.com,95433333,Jernbaneberget 1,7010,Trondheim
+846231,Eirik,Larsen,eirik.l@outlook.no,91232222,Espelandvegen 10,5259,Hjellestad
+847682,Vegard,Sætre,vegard.s@outlook.no,46784433,Meltzers gate 2,257,Oslo
+852966,Trond,Eriksen,trond.e@outlook.com,46787766,Gyldenløves gate 20,260,Oslo
+855867,Arild,Johansen,arild_j@online.no,49019900,Munkedamsveien 60,270,Oslo
+858230,Rolf,Lund,rolf_l@online.no,91456789,Drammensveien 82,271,Oslo
+859141,Gunn,Sandvik,gunn.s@live.no,94323322,Lars Hilles gate 15,5008,Bergen
+859878,Siv,Halvorsen,siv.h@protonmail.com,98761111,Nedre Bakklandet 10,7014,Trondheim
+859910,Bente,Andreassen,b.andreassen@gmail.com,94328899,Helleren 1,5042,Bergen
+870089,Stein,Solberg,stein.s@live.no,49016655,Nøstegaten 15,5011,Bergen
+877700,Eivind,Helle,eivind.h@outlook.no,43218899,Sandviksveien 25,5035,Bergen
+886749,Kåre,Johansen,kaare_j@gmail.com,42341111,TMV-kaien 1,7014,Trondheim
+893636,Synnøve,Isaksen,synnove.i@outlook.com,43212233,Flyplassvegen 1,5258,Blomsterdalen
+894102,Vidar,Pettersen,vidar_p@getmail.no,92345555,Kalandsvegen 5,5229,Kalandseidet
+897861,Linn,Karlsen,linn.k92@protonmail.com,46543210,Bygdøy allé 14,262,Oslo
+897998,Jon,Evensen,jon.e@getmail.no,44563322,Håkonsgaten 1,5015,Bergen
+899303,Bodil,Pedersen,bodil.p@gmail.com,94321111,Klæbuveien 10,7030,Trondheim
+900778,Kåre,Andreassen,kaare.a88@outlook.no,49018877,Ole Vigs gate 16,366,Oslo
+905356,Atle,Johnsen,atle.j@outlook.com,93450000,Nye Sandviksveien 15,5003,Bergen
+910045,Oddmund,Johnsen,oddmund_j@outlook.no,41232222,Ivar Lykkes veg 5,7075,Tiller
+911360,Turid,Hansen,turid.hansen@gmail.com,98764433,Schønings gate 7,356,Oslo
+912879,Heidi,Mikkelsen,heidi.m@outlook.com,92341122,Fjøsangerveien 20,5054,Bergen
+915441,Bjørnar,Rasmussen,bjornar.r@online.no,46783322,Sydneshaugen 2,5007,Bergen
+919983,Kristina,Moen,kristina.m@online.no,42347777,Baldersheimvegen 1,5646,Baldersheim
+920981,Liv,Strand,liv.s@gmail.com,43211212,Vågsgata 10,4306,Sandnes
+922581,Linda,Sørensen,linda.s@online.no,98768899,Marken 10,5017,Bergen
+923044,Ellen,Solberg,e.solberg@outlook.com,41234987,Arbins gate 1,253,Oslo
+937727,Berit,Helle,berit.h@gmail.com,93455656,Svilandsveien 10,4308,Sandnes
+940319,Kjellfrid,Sande,k.sande@gmail.com,42342233,Laguneveien 1,5239,Rådal
+943336,Ståle,Bakken,stale_b@gmail.com,43213322,Nygårdsgaten 25,5015,Bergen
+943652,Terje,Isaksen,terje.i@protonmail.com,44569999,Eidesvik 5,5443,Bømlo
+950960,Steinar,Jacobsen,steinar.j88@getmail.no,95432109,Henrik Ibsens gate 4,255,Oslo
+954948,Helge,Moe,helge.moe@gmail.com,49018888,Lønningsvegen 1,5258,Blomsterdalen
+956240,Liv,Dahl,liv.dahl@online.no,43210000,Wolffs gate 5,5006,Bergen
+961024,Sissel,Jensen,sissel.j@outlook.com,44562222,Titlestadvegen 5,5243,Fana
+963807,Turid,Evensen,turid.e@outlook.com,41234444,Lade allé 10,7041,Trondheim
+970143,Bente,Myhre,b.myhre@telenor.no,91231234,Jacob Aalls gate 14,364,Oslo
+970234,Liv,Evensen,liv.e.1982@yahoo.no,98761234,Holtegata 28,355,Oslo
+973938,Alf,Nygård,alf_n@live.no,45673333,Ranavikvegen 5,5454,Sæbøvik
+977055,Terje,Eriksen,terje.e.77@yahoo.no,97654321,Tollbugata 24,157,Oslo
+979068,Ove,Kristiansen,ove_k@gmail.com,45674567,Madlaveien 20,4009,Stavanger
+981304,Synnøve,Nilsen,synnove.n@altibox.no,43212222,Krokeidevegen 10,5244,Fana
+984516,May,Berg,may.b@altibox.no,98763333,Bratsbergvegen 1,7037,Trondheim
+985320,Trine,Olsen,trine.o@icloud.com,91231111,Verftsgata 10,7014,Trondheim
+990511,Vigdis,Johnsen,vigdis_j@altibox.no,95438899,Solheimsgaten 15,5054,Bergen
+991703,Knut,Moen,k.moen@outlook.no,45673322,Camilla Colletts vei 5,258,Oslo
+998515,Beate,Lunde,beate_l@icloud.com,93459999,Svortland 1,5430,Bremnes

@@ -1,0 +1,3168 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "version" : "v0 - Testing",
+    "title" : "Frost",
+    "contact" : {
+      "name" : "The Norwegian Meteorological Institute"
+    },
+    "license" : {
+      "name" : "Norwegian Licence for Open Government Data (NLOD) 2.0",
+      "url" : "https://data.norge.no/nlod/en/2.0"
+    }
+  },
+  "host" : "frost.met.no",
+  "basePath" : "/",
+  "tags" : [ {
+    "name" : "records"
+  }, {
+    "name" : "lightning"
+  }, {
+    "name" : "climatenormals"
+  }, {
+    "name" : "locations"
+  }, {
+    "name" : "frequencies (DEPRECATED)"
+  }, {
+    "name" : "elements"
+  }, {
+    "name" : "sources"
+  }, {
+    "name" : "observations"
+  } ],
+  "paths" : {
+    "/records/countyExtremes/v0.{format}" : {
+      "get" : {
+        "tags" : [ "records" ],
+        "summary" : "Get records.",
+        "description" : "Get records. To be expanded.",
+        "operationId" : "getRecords",
+        "parameters" : [ {
+          "name" : "sources",
+          "in" : "query",
+          "description" : "The sources to get records for as a comma-separated list of <a href=concepts2.html#searchfilter>search filters</a>. If left out, the output is not filtered on source.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "sourcenames",
+          "in" : "query",
+          "description" : "The source names to get records for as a comma-separated list of <a href=concepts2.html#searchfilter>search filters</a>. If left out, the output is not filtered on source name.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "counties",
+          "in" : "query",
+          "description" : "The counties to get records for as a comma-separated list of <a href=concepts2.html#searchfilter>search filters</a>. If left out, the output is not filtered on county.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "municipalities",
+          "in" : "query",
+          "description" : "The municipalities to get records for as a comma-separated list of <a href=concepts2.html#searchfilter>search filters</a>. If left out, the output is not filtered on municipality.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "elements",
+          "in" : "query",
+          "description" : "The elements to get records for as a comma-separated list of <a href=concepts2.html#searchfilter>search filters</a>. If left out, the output is not filtered on element.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "months",
+          "in" : "query",
+          "description" : "The months to get records for as a comma-separated list of integers or integer ranges between 1 and 12, e.g. '1,5,8-12'.  If left out, the output is not filtered on month.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "fields",
+          "in" : "query",
+          "description" : "The information to return as a comma-separated list of 'sourceid', 'sourcename', 'county', 'municipality', 'elementid', 'month', 'referencetime', or 'value'. For example 'county,month,referencetime1,elementid,value'. If omitted, all fields are returned.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "format",
+          "in" : "path",
+          "description" : "The output format of the result.",
+          "required" : true,
+          "type" : "string",
+          "default" : "jsonld",
+          "enum" : [ "jsonld" ]
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/RecordsResponse"
+            }
+          },
+          "400" : {
+            "description" : "Invalid parameter value or malformed request."
+          },
+          "401" : {
+            "description" : "Unauthorized client ID."
+          },
+          "404" : {
+            "description" : "No data was found for this combination of query parameters."
+          },
+          "500" : {
+            "description" : "Internal server error."
+          }
+        }
+      }
+    },
+    "/lightning/v0.{format}" : {
+      "get" : {
+        "tags" : [ "lightning" ],
+        "summary" : "Get lightning data form the Frost API.",
+        "description" : "Get lightning data from the MET Norway's data storage systems. The query parameters act as a filter; if all were left blank (not allowed in practice), one would retrieve all of the lightning data in the system. Restrict the data using the query parameters.",
+        "operationId" : "getLightning",
+        "produces" : [ "text/plain" ],
+        "parameters" : [ {
+          "name" : "referencetime",
+          "in" : "query",
+          "description" : "The time range to get observations for in either extended ISO-8601 format or the single word 'latest'. See <a href=concepts2.html#timespecification>Time Specifications</a> for documentation and examples.",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "maxage",
+          "in" : "query",
+          "description" : "The maximum observation age as an ISO-8601 period, like 'P1D'. Applicable only when referencetime=latest. In general, the lower the value of maxage, the shorter the request will take to complete. The default value is 'PT5M'.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "geometry",
+          "in" : "query",
+          "description" : "Get lightning within a polygon specified as POLYGON(...) using <a href='https://en.wikipedia.org/wiki/Well-known_text'>WKT</a>; see the reference section on the <a href=concepts2.html#geometryspecification>Geometry Specification</a> for documentation and examples.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "format",
+          "in" : "path",
+          "description" : "The output format of the result is <a href=dataclarifications.html#ualf>ualf</a>",
+          "required" : true,
+          "type" : "string",
+          "default" : "ualf",
+          "enum" : [ "ualf" ]
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "string"
+            }
+          },
+          "400" : {
+            "description" : "Invalid parameter value or malformed request."
+          },
+          "401" : {
+            "description" : "Unauthorized client ID."
+          },
+          "404" : {
+            "description" : "No data was found for the list of query Ids."
+          },
+          "500" : {
+            "description" : "Internal server error."
+          },
+          "503" : {
+            "description" : "Service temporarily unavailable."
+          }
+        }
+      }
+    },
+    "/climatenormals/v0.{format}" : {
+      "get" : {
+        "tags" : [ "climatenormals" ],
+        "summary" : "Get climate normals.",
+        "description" : "Get climate normals. To be expanded.",
+        "operationId" : "getClimateNormals",
+        "parameters" : [ {
+          "name" : "sources",
+          "in" : "query",
+          "description" : "The sources to get climate normals for as a comma-separated list. Each source should be of the form SN&lt;number&gt;.",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "elements",
+          "in" : "query",
+          "description" : "The elements to get climate normals for as a comma-separated list of <a href=concepts2.html#searchfilter>search filters</a>.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "period",
+          "in" : "query",
+          "description" : "The validity period, e.g. '1931/1960'. If specified, only climate normals for this period will be returned.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "format",
+          "in" : "path",
+          "description" : "The output format of the result.",
+          "required" : true,
+          "type" : "string",
+          "default" : "jsonld",
+          "enum" : [ "jsonld" ]
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/ClimateNormalsResponse"
+            }
+          },
+          "400" : {
+            "description" : "Invalid parameter value or malformed request."
+          },
+          "401" : {
+            "description" : "Unauthorized client ID."
+          },
+          "404" : {
+            "description" : "No data was found for this combination of query parameters."
+          },
+          "500" : {
+            "description" : "Internal server error."
+          }
+        }
+      }
+    },
+    "/climatenormals/available/v0.{format}" : {
+      "get" : {
+        "tags" : [ "climatenormals" ],
+        "summary" : "Get available combinations of sources, elements, and periods for climate normals.",
+        "description" : "Get available combinations of sources, elements, and periods for climate normals. To be expanded.",
+        "operationId" : "getAvailable",
+        "parameters" : [ {
+          "name" : "sources",
+          "in" : "query",
+          "description" : "If specified, only combinations matching these sources may be included in the output. Enter a comma-separated list of sources of the form SN&lt;number&gt;. If omitted, any source will match.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "elements",
+          "in" : "query",
+          "description" : "If specified, only combinations matching these elements may be included in the output. Enter a comma-separated list of element names in the form of <a href=concepts2.html#searchfilter>search filters</a>.  If omitted, any element will match.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "periods",
+          "in" : "query",
+          "description" : "If specified, only combinations matching these validity periods may be included in the output. Enter a comma-separated list of validity period of the form '&lt;from year&gt;/&lt;to year&gt;', e.g. '1931/1960'.  If omitted, any period will match.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "fields",
+          "in" : "query",
+          "description" : "Specifies what information to return as a comma-separated list of 'sourceid', 'elementid', or 'period'. For example, 'sourceid,period' specifies that only source IDs and periods will appear in the output. If omitted, all fields are returned.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "format",
+          "in" : "path",
+          "description" : "The output format of the result.",
+          "required" : true,
+          "type" : "string",
+          "default" : "jsonld",
+          "enum" : [ "jsonld" ]
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/ClimateNormalsAvailableResponse"
+            }
+          },
+          "400" : {
+            "description" : "Invalid parameter value or malformed request."
+          },
+          "401" : {
+            "description" : "Unauthorized client ID."
+          },
+          "404" : {
+            "description" : "No data was found for this combination of query parameters."
+          },
+          "500" : {
+            "description" : "Internal server error."
+          }
+        }
+      }
+    },
+    "/locations/v0.{format}" : {
+      "get" : {
+        "tags" : [ "locations" ],
+        "summary" : "Get metada for Frost API locations.",
+        "description" : "Get metadata for the location names defined in the Frost API. Use the query parameters to filter the set of location names returned. Leave the query parameters blank to select **all** location names.",
+        "operationId" : "getLocations",
+        "parameters" : [ {
+          "name" : "names",
+          "in" : "query",
+          "description" : "The Frost API location names that you want metadata for. Enter a comma-separated list to select multiple location names. Leave blank to get all names.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "geometry",
+          "in" : "query",
+          "description" : "Get Frost API location names by geometry. Geometries are specified as either nearest(POINT(...)) or POLYGON(...) using <a href='https://en.wikipedia.org/wiki/Well-known_text'>WKT</a>; see the reference section on the <a href=concepts2.html#geometryspecification>Geometry Specification</a> for documentation and examples.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "fields",
+          "in" : "query",
+          "description" : "A comma-separated list of the fields that should be present in the response. If set, only those properties listed here will be visible in the result set; e.g.: name,geometry will show only those two entries in the data set.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "format",
+          "in" : "path",
+          "description" : "The output format of the result.",
+          "required" : true,
+          "type" : "string",
+          "default" : "jsonld",
+          "enum" : [ "jsonld" ]
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/LocationResponse"
+            }
+          },
+          "400" : {
+            "description" : "Invalid parameter value or malformed request."
+          },
+          "401" : {
+            "description" : "Unauthorized client ID."
+          },
+          "404" : {
+            "description" : "No data was found for the list of query Ids."
+          },
+          "500" : {
+            "description" : "Internal server error."
+          }
+        }
+      }
+    },
+    "/frequencies/rainfall/v0.{format}" : {
+      "get" : {
+        "tags" : [ "frequencies (DEPRECATED)" ],
+        "summary" : "Get rainfall IDF data.",
+        "description" : "This endpoint has been deprecated due to technical limitations.\n    A response that used to return data with status 200 Ok will now instead return a descriptive\n    error message with status 404 Not Found.\n\n    Updated IDF data can for now be retrieved in Frost v1:\n\n      Per station metadata (report type = idf):\n        https://frost-beta.met.no/docs/apirefadvanced#/reports/reportsAvailableGet\n\n      Per station intensity values (report type = idf):\n        https://frost-beta.met.no/docs/apirefadvanced#/reports/reportsGet\n\n      Gridded metadata:\n        https://frost-beta.met.no/docs/apirefadvanced#/idf/idfAvailableGet\n\n      Gridded intensity values:\n        https://frost-beta.met.no/docs/apirefadvanced#/idf/idfGet\n\n    NOTE: Frost v1 is currently under development and the request/response formats for IDF-data may be changed at some point.\n  ",
+        "operationId" : "getRainfallIDF",
+        "parameters" : [ {
+          "name" : "sources",
+          "in" : "query",
+          "description" : "The Frost API source ID(s) that you want IDF data for. Enter either a comma-separated list of one or more stations (each of the form SN&lt;number&gt;[:&lt;number&gt;|all]), or the name of a gridded dataset. If left out, IDF data for all available station sources is returned.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "location",
+          "in" : "query",
+          "description" : "The geographic position from which to get IDF data in case of a gridded dataset. Format: POINT(&lt;longitude degrees&gt; &lt;latitude degrees&gt). Data from the nearest grid point is returned.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "durations",
+          "in" : "query",
+          "description" : "The Frost API IDF duration(s), in minutes, that you want IDF data for. Enter a comma-separated list to select multiple durations.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "frequencies",
+          "in" : "query",
+          "description" : "The Frost API IDF frequencies (return periods), in years, that you want IDF data for. Enter a comma-separated list to select multiple frequencies.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "unit",
+          "in" : "query",
+          "description" : "The unit of measure for the intensity. Specify 'mm' for millimetres per minute multiplied by the duration, or 'lsha' for litres per second per hectar. The default unit is 'lsha'",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "fields",
+          "in" : "query",
+          "description" : "A comma-separated list of the fields that should be present in the response. The sourceId and values attributes will always be returned in the query result. Leaving this parameter empty returns all attributes; otherwise only those properties listed will be visible in the result set (in addition to the sourceId and values); e.g.: unit,numberOfSeasons will show only sourceId, unit, numberOfSeasons, and values in the response.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "format",
+          "in" : "path",
+          "description" : "The output format of the result.",
+          "required" : true,
+          "type" : "string",
+          "default" : "jsonld",
+          "enum" : [ "jsonld" ]
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/RainfallIDFResponse"
+            }
+          },
+          "400" : {
+            "description" : "Invalid parameter value or malformed request."
+          },
+          "401" : {
+            "description" : "Unauthorized client ID."
+          },
+          "404" : {
+            "description" : "No data was found for the list of query Ids."
+          },
+          "500" : {
+            "description" : "Internal server error."
+          }
+        }
+      }
+    },
+    "/frequencies/rainfall/availableSources/v0.{format}" : {
+      "get" : {
+        "tags" : [ "frequencies (DEPRECATED)" ],
+        "summary" : "Get available sources for rainfall IDF data.",
+        "description" : "This endpoint has been deprecated due to technical limitations.\n    A response that used to return data with status 200 Ok will now instead return a descriptive\n    error message with status 404 Not Found.\n\n    Updated IDF data can for now be retrieved in Frost v1:\n\n      Per station metadata (report type = idf):\n        https://frost-beta.met.no/docs/apirefadvanced#/reports/reportsAvailableGet\n\n      Per station intensity values (report type = idf):\n        https://frost-beta.met.no/docs/apirefadvanced#/reports/reportsGet\n\n      Gridded metadata:\n        https://frost-beta.met.no/docs/apirefadvanced#/idf/idfAvailableGet\n\n      Gridded intensity values:\n        https://frost-beta.met.no/docs/apirefadvanced#/idf/idfGet\n\n    NOTE: Frost v1 is currently under development and the request/response formats for IDF-data may be changed at some point.\n  ",
+        "operationId" : "getRainfallIDFSources",
+        "parameters" : [ {
+          "name" : "sources",
+          "in" : "query",
+          "description" : "The Frost API source ID(s) that you want information for. Enter either a comma-separated list of one or more stations (each of the form SN&lt;number&gt;[:&lt;number&gt;|all]), or the name of a gridded dataset. If left out, information for all available sources is returned.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "types",
+          "in" : "query",
+          "description" : "The type(s) of Frost API source that you want information for. Enter a comma-separated list to select multiple types.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "fields",
+          "in" : "query",
+          "description" : "A comma-separated list of the fields that should be present in the response. The sourceId attribute will always be returned in the query result. Leaving this parameter empty returns all attributes; otherwise only those properties listed will be visible in the result set (in addition to the sourceId); e.g.: validFrom,numberOfSeasons will show only sourceId, validFrom, and numberOfSeasons in the response.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "format",
+          "in" : "path",
+          "description" : "The output format of the result.",
+          "required" : true,
+          "type" : "string",
+          "default" : "jsonld",
+          "enum" : [ "jsonld" ]
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/RainfallIDFSourcesResponse"
+            }
+          },
+          "400" : {
+            "description" : "Invalid parameter value or malformed request."
+          },
+          "401" : {
+            "description" : "Unauthorized client ID."
+          },
+          "404" : {
+            "description" : "No data was found for the list of query Ids."
+          },
+          "500" : {
+            "description" : "Internal server error."
+          }
+        }
+      }
+    },
+    "/elements/v0.{format}" : {
+      "get" : {
+        "tags" : [ "elements" ],
+        "summary" : "Get metadata about Frost API elements.",
+        "description" : "Get metadata about the weather and climate elements that are defined for use in the Frost API. Use the query parameters to filter which elements to return and what fields to include for each element. Leave the query parameters blank to select **all** elements. **Note:** an empty list of sensor level values in the output means that the sensor level values may vary dynamically for this element. In this case it will not be possible to filter on specific sensor level values in the sensorLevels query parameter.",
+        "operationId" : "getElements",
+        "parameters" : [ {
+          "name" : "ids",
+          "in" : "query",
+          "description" : "The element IDs to get metadata for as a comma-separated list of <a href=concepts2.html#searchfilter>search filters</a>. An element ID is structured as a <a href=concepts2.html#calculationmethod>calculation method</a>.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "names",
+          "in" : "query",
+          "description" : "The element names to get metadata for as a comma-separated list of <a href=concepts2.html#searchfilter>search filters</a>.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "descriptions",
+          "in" : "query",
+          "description" : "The descriptions to get metadata for as a comma-separated list of <a href=concepts2.html#searchfilter>search filters</a>.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "units",
+          "in" : "query",
+          "description" : "The units to get metadata for as a comma-separated list of <a href=concepts2.html#searchfilter>search filters</a>. <b>Note:</b> when the unit is 'code', a codetable is in use.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "codeTables",
+          "in" : "query",
+          "description" : "The code tables to get metadata for as a comma-separated list of <a href=concepts2.html#searchfilter>search filters</a>. <b>Note:</b> When a codetable is in use, the unit is 'code'.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "statuses",
+          "in" : "query",
+          "description" : "The statuses to get metadata for as a comma-separated list of <a href=concepts2.html#searchfilter>search filters</a>.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "calculationMethod",
+          "in" : "query",
+          "description" : "The <a href=concepts2.html#calculationmethod>calculation method</a> filter as a <a href=concepts2.html#jsonfilter>JSON filter</a> that supports the following keys: baseNames, methods, innerMethods, periods, innerPeriods, thresholds, methodDescriptions, innerMethodDescriptions, methodUnits, and innerMethodUnits",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "categories",
+          "in" : "query",
+          "description" : "The categories to get metadata for as a comma-separated list of <a href=concepts2.html#searchfilter>search filters</a>.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "timeOffsets",
+          "in" : "query",
+          "description" : "The time offsets to get metadata for as a comma-separated list of <a href=concepts2.html#searchfilter>search filters</a>.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "sensorLevels",
+          "in" : "query",
+          "description" : "The sensor levels filter as a <a href=concepts2.html#jsonfilter>JSON filter</a> that supports the following keys: levelTypes, units, defaultValues, and values. **Note:** if the sensor level values may vary dynamically for the element, the values key won't have any effect.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "oldElementCodes",
+          "in" : "query",
+          "description" : "The old MET Norway element codes to get metadata for as a comma-separated list of <a href=concepts2.html#searchfilter>search filters</a>.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "oldUnits",
+          "in" : "query",
+          "description" : "The old MET Norway units to get metadata for as a comma-separated list of <a href=concepts2.html#searchfilter>search filters</a>.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "cfStandardNames",
+          "in" : "query",
+          "description" : "The CF standard names to get metadata for as a comma-separated list of <a href=concepts2.html#searchfilter>search filters</a>.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "cfCellMethods",
+          "in" : "query",
+          "description" : "The CF cell methods to get metadata for as a comma-separated list of <a href=concepts2.html#searchfilter>search filters</a>.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "cfUnits",
+          "in" : "query",
+          "description" : "The CF units to get metadata for as a comma-separated list of <a href=concepts2.html#searchfilter>search filters</a>.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "cfVersions",
+          "in" : "query",
+          "description" : "The CF versions to get metadata for as a comma-separated list of <a href=concepts2.html#searchfilter>search filters</a>.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "fields",
+          "in" : "query",
+          "description" : "The information to return as a comma-separated list of id, name, description, unit, codeTable, status, cmBaseName, cmMethod, cmInnerMethod, cmPeriod, cmInnerPeriod, cmThreshold, cmMethodDescription, cmInnerMethodDescription, cmMethodUnit, cmInnerMethodUnit, category, sensorLevelType, sensorLevelUnit, sensorLevelDefaultValue, sensorLevelValues, oldElementCodes, oldUnit, cfStandardName, cfCellMethod, cfUnit, or cfVersion. For example 'id,unit,oldElementCodes,oldUnit'. If omitted, all fields are returned.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "lang",
+          "in" : "query",
+          "description" : "ISO language/locale to be used for search filters and return values.",
+          "required" : false,
+          "type" : "string",
+          "default" : "en-US",
+          "enum" : [ "en-US", "nb-NO", "nn-NO" ]
+        }, {
+          "name" : "format",
+          "in" : "path",
+          "description" : "The output format of the result.",
+          "required" : true,
+          "type" : "string",
+          "default" : "jsonld",
+          "enum" : [ "jsonld" ]
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/ElementResponse"
+            }
+          },
+          "400" : {
+            "description" : "Invalid parameter value or malformed request."
+          },
+          "401" : {
+            "description" : "Unauthorized client ID."
+          },
+          "404" : {
+            "description" : "No data was found for the list of query Ids."
+          },
+          "500" : {
+            "description" : "Internal server error."
+          }
+        }
+      }
+    },
+    "/elements/codeTables/v0.{format}" : {
+      "get" : {
+        "tags" : [ "elements" ],
+        "summary" : "Get metadata about Frost API code tables.",
+        "description" : "Get metadata about the code tables available in the Frost API. A code table defines a small number of discrete values for an element. Use the query parameters to filter which code tables to return and what fields to include for each one. Leave the query parameters blank to select **all** code tables.",
+        "operationId" : "getCodeTables",
+        "parameters" : [ {
+          "name" : "ids",
+          "in" : "query",
+          "description" : "The code table IDs to get metadata for as a comma-separated list of <a href=concepts2.html#searchfilter>search filters</a>.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "fields",
+          "in" : "query",
+          "description" : "The fields to include in the output in addition to the code table name as a comma-separated list of header and values. Leave the parameter empty to include both header and values.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "lang",
+          "in" : "query",
+          "description" : "ISO language/locale to be used for search filters and return values.",
+          "required" : false,
+          "type" : "string",
+          "default" : "en-US",
+          "enum" : [ "en-US", "nb-NO", "nn-NO" ]
+        }, {
+          "name" : "format",
+          "in" : "path",
+          "description" : "The output format of the result.",
+          "required" : true,
+          "type" : "string",
+          "default" : "jsonld",
+          "enum" : [ "jsonld" ]
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/CodeTableResponse"
+            }
+          },
+          "400" : {
+            "description" : "Invalid parameter value or malformed request."
+          },
+          "401" : {
+            "description" : "Unauthorized client ID."
+          },
+          "404" : {
+            "description" : "No data was found for the list of query Ids."
+          },
+          "500" : {
+            "description" : "Internal server error."
+          }
+        }
+      }
+    },
+    "/sources/v0.{format}" : {
+      "get" : {
+        "tags" : [ "sources" ],
+        "summary" : "Get metada for Frost API sources.",
+        "description" : "Get metadata for the source entitites defined in the Frost API. Use the query parameters to filter the set of sources returned. Leave the query parameters blank to select **all** sources.",
+        "operationId" : "getSources",
+        "parameters" : [ {
+          "name" : "ids",
+          "in" : "query",
+          "description" : "The Frost API source ID(s) that you want metadata for. Enter a comma-separated list to select multiple sources. For sources of type SensorSystem or RegionDataset, the source ID must be of the form &lt;prefix&gt;&lt;int&gt; where &lt;prefix&gt; is SN for SensorSystem and TR, NR, GR, or GF for RegionDataset. The integer following the prefix may contain wildcards, e.g. SN18\\*7\\* matches both SN18700 and SN18007.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "types",
+          "in" : "query",
+          "description" : "The type of Frost API source that you want metadata for.",
+          "required" : false,
+          "type" : "string",
+          "enum" : [ "SensorSystem", "InterpolatedDataset", "RegionDataset" ]
+        }, {
+          "name" : "elements",
+          "in" : "query",
+          "description" : "If specified, only sources for which observations are available for all of these elements may be included in the result. Enter a comma-separated list of <a href=concepts2.html#searchfilter>search filters</a>.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "geometry",
+          "in" : "query",
+          "description" : "Get Frost API sources defined by a specified geometry. Geometries are specified as either nearest(POINT(...)) or POLYGON(...) using <a href='https://en.wikipedia.org/wiki/Well-known_text'>WKT</a>; see the reference section on the <a href=concepts2.html#geometryspecification>Geometry Specification</a> for documentation and examples. If the nearest() function is specified, the output will include the distance in kilometers from the reference point.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "nearestmaxcount",
+          "in" : "query",
+          "description" : "The maximum number of sources returned when using nearest(POINT(...)) for geometry. The default value is 1.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "validtime",
+          "in" : "query",
+          "description" : "If specified, only sources that have been, or still are, valid/applicable during some part of this interval may be included in the result. Specify &lt;date&gt;/&lt;date&gt;, &lt;date&gt;/now, &lt;date&gt;, or now, where &lt;date&gt; is of the form YYYY-MM-DD, e.g. 2017-03-06. The default is 'now', i.e. only currently valid/applicable sources are included.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "name",
+          "in" : "query",
+          "description" : "If specified, only sources whose 'name' attribute matches this <a href=concepts2.html#searchfilter>search filter</a> may be included in the result.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "country",
+          "in" : "query",
+          "description" : "If specified, only sources whose 'country' or 'countryCode' attribute matches this <a href=concepts2.html#searchfilter>search filter</a> may be included in the result.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "county",
+          "in" : "query",
+          "description" : "If specified, only sources whose 'county' or 'countyId' attribute matches this <a href=concepts2.html#searchfilter>search filter</a> may be included in the result.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "municipality",
+          "in" : "query",
+          "description" : "If specified, only sources whose 'municipality' or 'municipalityId' attribute matches this <a href=concepts2.html#searchfilter>search filter</a> may be included in the result.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "wmoid",
+          "in" : "query",
+          "description" : "If specified, only sources whose 'wmoId' attribute matches this <a href=concepts2.html#searchfilter>search filter</a> may be included in the result.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "stationholder",
+          "in" : "query",
+          "description" : "If specified, only sources whose 'stationHolders' attribute contains at least one name that matches this <a href=concepts2.html#searchfilter>search filter</a> may be included in the result.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "externalids",
+          "in" : "query",
+          "description" : "If specified, only sources whose 'externalIds' attribute contains at least one value that matches any of the specified, comma-separated list of <a href=concepts2.html#searchfilter>search filters</a> may be included in the result.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "icaocode",
+          "in" : "query",
+          "description" : "If specified, only sources whose 'icaoCodes' attribute contains at least one name that matches this <a href=concepts2.html#searchfilter>search filter</a> may be included in the result.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "shipcode",
+          "in" : "query",
+          "description" : "If specified, only sources whose 'shipCodes' attribute contains at least one name that matches this <a href=concepts2.html#searchfilter>search filter</a> may be included in the result.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "wigosid",
+          "in" : "query",
+          "description" : "If specified, only sources whose 'wigosId' attribute matches this <a href=concepts2.html#searchfilter>search filter</a> may be included in the result.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "ontologyid",
+          "in" : "query",
+          "description" : "A comma-separated list of the ontologyids that should be present in the response. Default if not set is to include all.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "fields",
+          "in" : "query",
+          "description" : "A comma-separated list of the fields that should be present in the response. If set, only those properties listed here will be visible in the result set; e.g.: name,country will show only those two entries in the result in addition to the id which is always shown.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "format",
+          "in" : "path",
+          "description" : "The output format of the result.",
+          "required" : true,
+          "type" : "string",
+          "default" : "jsonld",
+          "enum" : [ "jsonld" ]
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/SourceResponse"
+            }
+          },
+          "400" : {
+            "description" : "Invalid parameter value or malformed request."
+          },
+          "401" : {
+            "description" : "Unauthorized client ID."
+          },
+          "404" : {
+            "description" : "No data was found for the list of query Ids."
+          },
+          "500" : {
+            "description" : "Internal server error."
+          }
+        }
+      }
+    },
+    "/observations/availableTimeSeries/v0.{format}" : {
+      "get" : {
+        "tags" : [ "observations" ],
+        "summary" : "Find timeseries metadata by source and/or element",
+        "description" : "",
+        "operationId" : "timeSeries",
+        "parameters" : [ {
+          "name" : "sources",
+          "in" : "query",
+          "description" : "The ID(s) of the data sources to get time series for as a comma-separated list of Frost API station IDs: SN&lt;int&gt;[:&lt;int&gt;|all] (e.g. SN18700, SN18700:0, or SN18700:all). 0 is the main sensor and x&ge;1 is a parallel sensor. Retrieve the complete station lists using the <a href=\"https://frost.met.no/api.html#!/sources\">sources</a> resource. If left out, time series for all available stations are retrieved.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "referencetime",
+          "in" : "query",
+          "description" : "The time range to get time series for as extended ISO-8601 format. See <a href=concepts2.html#time_specification>Time Specifications</a> for documentation and examples. Note: in this case 'latest' is not supported, only the explicit from/to form. If left out, time series for all available periods are retrieved.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "elements",
+          "in" : "query",
+          "description" : "The elements to get time series for as a comma-separated list of <a href=concepts2.html#searchfilter>search filters</a>. Elements follow the Frost API naming convention. Available element names can be found <a href=\"https://frost.met.no/api.html#!/elements\">here</a>. If left out, time series for all available elements are retrieved.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "timeoffsets",
+          "in" : "query",
+          "description" : "The time offsets to get time series for as a comma-separated list of ISO-8601 periods, e.g. 'PT6H,PT18H' or <a href=concepts2.html#level-offset-filter>default</a>. If left out, the output is not filtered on time offset.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "timeresolutions",
+          "in" : "query",
+          "description" : "The time resolutions to get time series for as a comma-separated list of ISO-8601 periods, e.g. 'PT6H,PT18H'. If left out, the output is not filtered on time resolution.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "timeseriesids",
+          "in" : "query",
+          "description" : "The internal time series IDs to get time series for as a comma-separated list of integers, e.g. '0,1'. The default value is 0.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "performancecategories",
+          "in" : "query",
+          "description" : "The performance categories to get time series for as a comma-separated list of letters, e.g. 'A,C'. If left out, the output is not filtered on performance category.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "exposurecategories",
+          "in" : "query",
+          "description" : "The exposure categories to get time series for as a comma-separated list of integers, e.g. '1,2'. If left out, the output is not filtered on exposure category.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "levels",
+          "in" : "query",
+          "description" : "The sensor levels to get observations for as a comma-separated list of numbers, e.g. '0.1,2,10,20' or <a href=concepts2.html#level-offset-filter>default</a>. If left out, the output is not filtered on sensor level.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "levelTypes",
+          "in" : "query",
+          "description" : "The sensor level types to get records for as a comma-separated list of <a href=concepts2.html#searchfilter>search filters</a>. If left out, the output is not filtered on sensor level type.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "levelUnits",
+          "in" : "query",
+          "description" : "The sensor level units to get records for as a comma-separated list of <a href=concepts2.html#searchfilter>search filters</a>. If left out, the output is not filtered on sensor level unit.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "fields",
+          "in" : "query",
+          "description" : "Fields to include in the output as a comma-separated list. If specified, only these fields are included in the output. If left out, all fields are included.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "format",
+          "in" : "path",
+          "description" : "The output format of the result.",
+          "required" : true,
+          "type" : "string",
+          "default" : "jsonld",
+          "enum" : [ "jsonld" ]
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/ObservationTimeSeriesResponse"
+            }
+          },
+          "400" : {
+            "description" : "Invalid parameter value or malformed request."
+          },
+          "401" : {
+            "description" : "Unauthorized client ID."
+          },
+          "404" : {
+            "description" : "No data was found for the list of query Ids."
+          },
+          "500" : {
+            "description" : "Internal server error."
+          }
+        }
+      }
+    },
+    "/observations/v0.{format}" : {
+      "get" : {
+        "tags" : [ "observations" ],
+        "summary" : "Get observation data from the Frost API.",
+        "description" : "This is the core resource for retrieving the actual observation data from MET Norway's data storage systems. The query parameters act as a filter; if all were left blank (not allowed in practice), one would retrieve all of the observation data in the system. Restrict the data using the query parameters. For possible input parameters see /sources, /elements, and /observations/timeseries.",
+        "operationId" : "observations",
+        "parameters" : [ {
+          "name" : "sources",
+          "in" : "query",
+          "description" : "The ID(s) of the data sources to get observations for as a comma-separated list of Frost API station IDs: SN&lt;int&gt;[:&lt;int&gt;|all] (e.g. SN18700, SN18700:0, or SN18700:all). 0 is the main sensor and x&ge;1 is a parallel sensor. Retrieve the complete station lists using the <a href=api.html#/sources>sources</a> resource.",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "referencetime",
+          "in" : "query",
+          "description" : "The time range to get observations for in either extended ISO-8601 format or the single word 'latest'. See <a href=concepts2.html#time_specification>Time Specifications</a> for documentation and examples.",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "elements",
+          "in" : "query",
+          "description" : "The elements to get observations for as a comma-separated list of names that follow the Frost API naming convention. Available element names can be found <a href=api.html#/elements>here</a>.",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "maxage",
+          "in" : "query",
+          "description" : "The maximum observation age as an ISO-8601 period, like 'P1D'. Applicable only when referencetime=latest. In general, the lower the value of maxage, the shorter the request will take to complete. The default value is 'PT3H'.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "limit",
+          "in" : "query",
+          "description" : "The maximum number of observation times to be returned for each source/element combination, counting from the most recent time. Applicable only when referencetime=latest. Specify either 'all' to get all available times, or a positive integer. The default value is 1.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "timeoffsets",
+          "in" : "query",
+          "description" : "The time offsets to get observations for as a comma-separated list of ISO-8601 periods, e.g. 'PT6H,PT18H' or <a href=concepts2.html#level-offset-filter>default</a>. If left out, the output is not filtered on time offset.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "timeresolutions",
+          "in" : "query",
+          "description" : "The time resolutions to get observations for as a comma-separated list of ISO-8601 periods, e.g. 'PT6H,PT18H'. If left out, the output is not filtered on time resolution.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "timeseriesids",
+          "in" : "query",
+          "description" : "The internal time series IDs to get observations for as a comma-separated list of integers, e.g. '0,1'. The default value is 0.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "performancecategories",
+          "in" : "query",
+          "description" : "The performance categories to get observations for as a comma-separated list of letters, e.g. 'A,C'. Enter a comma-separated list to specify multiple performance categories. If left out, the output is not filtered on performance category.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "exposurecategories",
+          "in" : "query",
+          "description" : "The exposure categories to get observations for as a comma-separated list of integers, e.g. '1,2'. If left out, the output is not filtered on exposure category.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "qualities",
+          "in" : "query",
+          "description" : "The qualities to get observations for as a comma-separated list of integers, e.g. '1,2'. See <a href=\"https://frost.met.no/api.html#/observations/availableQualityCodes\"> available qualities and their meaning. </a> If left out, the output is not filtered by quality.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "levels",
+          "in" : "query",
+          "description" : "The sensor levels to get observations for as a comma-separated list of numbers, e.g. '0.1,2,10,20' or <a href=concepts2.html#level-offset-filter>default</a>. If left out, the output is not filtered on sensor level.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "includeextra",
+          "in" : "query",
+          "description" : "If this query parameter is set to 1 and extra data is available, this data is included in the response. Extra data currently consists of the original observation value and the 16-character control info.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "fields",
+          "in" : "query",
+          "description" : "Fields to include in the output as a comma-separated list. If specified, only these fields are included in the output. If left out, all fields are included.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "format",
+          "in" : "path",
+          "description" : "The output format of the result. Json is fully supported, while CSV is still in Beta!",
+          "required" : true,
+          "type" : "string",
+          "default" : "jsonld",
+          "enum" : [ "jsonld", "csv" ]
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/ObservationResponse"
+            }
+          },
+          "400" : {
+            "description" : "Invalid parameter value or malformed request."
+          },
+          "401" : {
+            "description" : "Unauthorized client ID."
+          },
+          "403" : {
+            "description" : "Too many observations requested."
+          },
+          "404" : {
+            "description" : "No data was found for the query parameters."
+          },
+          "412" : {
+            "description" : "No available time series for the query parameters."
+          },
+          "429" : {
+            "description" : "The service is busy. Too many requests in progress. Retry-After is set with the number of seconds before the request should be retried again."
+          },
+          "500" : {
+            "description" : "Internal server error."
+          },
+          "503" : {
+            "description" : "The service is busy. Too many requests in progress. Retry-After is set with the number of seconds before the request should be retried again."
+          }
+        }
+      }
+    },
+    "/observations/metadataupdatecount/v0" : {
+      "get" : {
+        "tags" : [ "observations" ],
+        "operationId" : "metadataUpdateCount",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/ActionAnyContent"
+            },
+            "headers" : { }
+          }
+        }
+      }
+    },
+    "/observations/quality/v0.{format}" : {
+      "get" : {
+        "tags" : [ "observations" ],
+        "summary" : "Get detailed information about the quality of an observation.",
+        "description" : "This provides detailed information about an observation's parameter's quality.",
+        "operationId" : "quality",
+        "parameters" : [ {
+          "name" : "flags",
+          "in" : "query",
+          "description" : "The quality flag combination you want information about. Normally, you should get this from an observations call.",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "fields",
+          "in" : "query",
+          "description" : "Fields to access",
+          "required" : false,
+          "type" : "string",
+          "enum" : [ "summarized", "flag", "details" ]
+        }, {
+          "name" : "lang",
+          "in" : "query",
+          "description" : "ISO language/locale of return values.",
+          "required" : false,
+          "type" : "string",
+          "default" : "en-US",
+          "enum" : [ "en-US", "nb-NO", "nn-NO" ]
+        }, {
+          "name" : "format",
+          "in" : "path",
+          "description" : "The output format of the result.",
+          "required" : true,
+          "type" : "string",
+          "default" : "jsonld",
+          "enum" : [ "jsonld" ]
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/QualityInformationResponse"
+            }
+          },
+          "400" : {
+            "description" : "Invalid parameter value or malformed request."
+          },
+          "401" : {
+            "description" : "Unauthorized client ID."
+          },
+          "404" : {
+            "description" : "No data was found for the list of query Ids."
+          },
+          "500" : {
+            "description" : "Internal server error."
+          }
+        }
+      }
+    },
+    "/observations/availableQualityCodes/v0.{format}" : {
+      "get" : {
+        "tags" : [ "observations" ],
+        "summary" : "Get information about the existing quality flags.",
+        "description" : "This provides a list of all possible detail values given in the quality service.",
+        "operationId" : "availableQualityCodes",
+        "parameters" : [ {
+          "name" : "lang",
+          "in" : "query",
+          "description" : "ISO language/locale of return values.",
+          "required" : false,
+          "type" : "string",
+          "default" : "en-US",
+          "enum" : [ "en-US", "nb-NO", "nn-NO" ]
+        }, {
+          "name" : "fields",
+          "in" : "query",
+          "description" : "Fields to access",
+          "required" : false,
+          "type" : "string",
+          "enum" : [ "summarized", "details" ]
+        }, {
+          "name" : "format",
+          "in" : "path",
+          "description" : "The output format of the result.",
+          "required" : true,
+          "type" : "string",
+          "default" : "jsonld",
+          "enum" : [ "jsonld" ]
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/QualityInformationResponse"
+            }
+          },
+          "400" : {
+            "description" : "Invalid parameter value or malformed request."
+          },
+          "401" : {
+            "description" : "Unauthorized client ID."
+          },
+          "404" : {
+            "description" : "No data was found for the list of query Ids."
+          },
+          "500" : {
+            "description" : "Internal server error."
+          }
+        }
+      }
+    },
+    "/observations/lastupdate/v0" : {
+      "get" : {
+        "tags" : [ "observations" ],
+        "operationId" : "lastUpdate",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/ActionAnyContent"
+            },
+            "headers" : { }
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "Record" : {
+      "type" : "object",
+      "properties" : {
+        "sourceId" : {
+          "type" : "string",
+          "example" : "SN9600",
+          "description" : "Source id."
+        },
+        "sourceName" : {
+          "type" : "string",
+          "example" : "TYNSET",
+          "description" : "Source name."
+        },
+        "county" : {
+          "type" : "string",
+          "example" : "Hedmark",
+          "description" : "County."
+        },
+        "municipality" : {
+          "type" : "string",
+          "example" : "Tynset",
+          "description" : "Municipality."
+        },
+        "elementId" : {
+          "type" : "string",
+          "example" : "min(air_temperature P1D)",
+          "description" : "Element id."
+        },
+        "month" : {
+          "type" : "object",
+          "example" : "2",
+          "description" : "Month."
+        },
+        "referenceTime" : {
+          "type" : "string",
+          "example" : "1912-02-01",
+          "description" : "Date/time of occurrence 1."
+        },
+        "value" : {
+          "type" : "object",
+          "example" : "-50.3",
+          "description" : "Record value."
+        }
+      },
+      "description" : "A single record value with metadata"
+    },
+    "RecordsResponse" : {
+      "type" : "object",
+      "properties" : {
+        "@context" : {
+          "type" : "string",
+          "format" : "url",
+          "example" : "https://frost.met.no/schema",
+          "description" : "The Json-LD context."
+        },
+        "@type" : {
+          "type" : "string",
+          "example" : "RecordsResponse",
+          "description" : "The object type."
+        },
+        "apiVersion" : {
+          "type" : "string",
+          "example" : "v0",
+          "description" : "The version of the API that generated this response."
+        },
+        "license" : {
+          "type" : "string",
+          "format" : "url",
+          "example" : "https://creativecommons.org/licenses/by/3.0/no/",
+          "description" : "The license that applies to this content."
+        },
+        "createdAt" : {
+          "type" : "string",
+          "example" : "2007-11-06T16:34:41.000Z",
+          "description" : "The time at which this document was created (RFC 3339)."
+        },
+        "queryTime" : {
+          "type" : "string",
+          "example" : "0.025",
+          "description" : "The time, in seconds, that this document took to generate."
+        },
+        "currentItemCount" : {
+          "type" : "integer",
+          "format" : "int64",
+          "example" : 3456,
+          "description" : "The current number of items in this result set."
+        },
+        "itemsPerPage" : {
+          "type" : "integer",
+          "format" : "int64",
+          "example" : 1000,
+          "description" : "The maximum number of items in a result set."
+        },
+        "offset" : {
+          "type" : "integer",
+          "format" : "int64",
+          "example" : 2000,
+          "description" : "The offset of the first item in the result set. The Frost API uses a zero-base index."
+        },
+        "totalItemCount" : {
+          "type" : "integer",
+          "format" : "int64",
+          "example" : 1000,
+          "description" : "The total number of items in this specific result set."
+        },
+        "nextLink" : {
+          "type" : "string",
+          "format" : "url",
+          "example" : "https://frost.met.no/resource/v0.jsonld?param=example_param&offset=3000",
+          "description" : "The next link indicates how more data can be retrieved. It points to the URI to load the next set of data."
+        },
+        "previousLink" : {
+          "type" : "string",
+          "format" : "url",
+          "example" : "https://frost.met.no/resource/v0.jsonld?param=example_param&offset=1000",
+          "description" : "The previous link indicates how more data can be retrieved. It points to the URI to load the previous set of data."
+        },
+        "currentLink" : {
+          "type" : "string",
+          "format" : "url",
+          "example" : "https://frost.met.no/resource/v0.jsonld?param=example_param&offset=2000",
+          "description" : "The current link indicates the URI that was used to generate the current API response"
+        },
+        "data" : {
+          "type" : "array",
+          "description" : "Container for all the data from the response.",
+          "items" : {
+            "$ref" : "#/definitions/Record"
+          }
+        }
+      },
+      "description" : "Data response for records"
+    },
+    "ClimateNormal" : {
+      "type" : "object",
+      "properties" : {
+        "sourceId" : {
+          "type" : "string",
+          "example" : "SN18700",
+          "description" : "Source id."
+        },
+        "elementId" : {
+          "type" : "string",
+          "example" : "mean(min(air_temperature P1D) P1M)",
+          "description" : "Element id."
+        },
+        "period" : {
+          "type" : "string",
+          "example" : "1961/1990",
+          "description" : "Validity period."
+        },
+        "month" : {
+          "type" : "object",
+          "example" : "3",
+          "description" : "Month."
+        },
+        "day" : {
+          "type" : "object",
+          "example" : "31",
+          "description" : "Day of month (omitted if n/a)."
+        },
+        "normal" : {
+          "type" : "object",
+          "example" : "5.2",
+          "description" : "Normal value (omitted if not found)."
+        }
+      },
+      "description" : "A single climate normal value with metadata"
+    },
+    "ClimateNormalsResponse" : {
+      "type" : "object",
+      "properties" : {
+        "@context" : {
+          "type" : "string",
+          "format" : "url",
+          "example" : "https://frost.met.no/schema",
+          "description" : "The Json-LD context."
+        },
+        "@type" : {
+          "type" : "string",
+          "example" : "ClimateNormalsResponse",
+          "description" : "The object type."
+        },
+        "apiVersion" : {
+          "type" : "string",
+          "example" : "v0",
+          "description" : "The version of the API that generated this response."
+        },
+        "license" : {
+          "type" : "string",
+          "format" : "url",
+          "example" : "https://creativecommons.org/licenses/by/3.0/no/",
+          "description" : "The license that applies to this content."
+        },
+        "createdAt" : {
+          "type" : "string",
+          "example" : "2007-11-06T16:34:41.000Z",
+          "description" : "The time at which this document was created (RFC 3339)."
+        },
+        "queryTime" : {
+          "type" : "string",
+          "example" : "0.025",
+          "description" : "The time, in seconds, that this document took to generate."
+        },
+        "currentItemCount" : {
+          "type" : "integer",
+          "format" : "int64",
+          "example" : 3456,
+          "description" : "The current number of items in this result set."
+        },
+        "itemsPerPage" : {
+          "type" : "integer",
+          "format" : "int64",
+          "example" : 1000,
+          "description" : "The maximum number of items in a result set."
+        },
+        "offset" : {
+          "type" : "integer",
+          "format" : "int64",
+          "example" : 2000,
+          "description" : "The offset of the first item in the result set. The Frost API uses a zero-base index."
+        },
+        "totalItemCount" : {
+          "type" : "integer",
+          "format" : "int64",
+          "example" : 1000,
+          "description" : "The total number of items in this specific result set."
+        },
+        "nextLink" : {
+          "type" : "string",
+          "format" : "url",
+          "example" : "https://frost.met.no/resource/v0.jsonld?param=example_param&offset=3000",
+          "description" : "The next link indicates how more data can be retrieved. It points to the URI to load the next set of data."
+        },
+        "previousLink" : {
+          "type" : "string",
+          "format" : "url",
+          "example" : "https://frost.met.no/resource/v0.jsonld?param=example_param&offset=1000",
+          "description" : "The previous link indicates how more data can be retrieved. It points to the URI to load the previous set of data."
+        },
+        "currentLink" : {
+          "type" : "string",
+          "format" : "url",
+          "example" : "https://frost.met.no/resource/v0.jsonld?param=example_param&offset=2000",
+          "description" : "The current link indicates the URI that was used to generate the current API response"
+        },
+        "data" : {
+          "type" : "array",
+          "description" : "Container for all the data from the response.",
+          "items" : {
+            "$ref" : "#/definitions/ClimateNormal"
+          }
+        }
+      },
+      "description" : "Data response for climate normals"
+    },
+    "ClimateNormalsAvailable" : {
+      "type" : "object",
+      "properties" : {
+        "sourceId" : {
+          "type" : "string",
+          "example" : "SN18700",
+          "description" : "Source id."
+        },
+        "elementId" : {
+          "type" : "string",
+          "example" : "mean(min(air_temperature P1D) P1M)",
+          "description" : "Element id."
+        },
+        "period" : {
+          "type" : "string",
+          "example" : "1961/1990",
+          "description" : "Validity period."
+        }
+      },
+      "description" : "An available metadata combination for climate normals"
+    },
+    "ClimateNormalsAvailableResponse" : {
+      "type" : "object",
+      "properties" : {
+        "@context" : {
+          "type" : "string",
+          "format" : "url",
+          "example" : "https://frost.met.no/schema",
+          "description" : "The Json-LD context."
+        },
+        "@type" : {
+          "type" : "string",
+          "example" : "ClimateNormalsAvailableResponse",
+          "description" : "The object type."
+        },
+        "apiVersion" : {
+          "type" : "string",
+          "example" : "v0",
+          "description" : "The version of the API that generated this response."
+        },
+        "license" : {
+          "type" : "string",
+          "format" : "url",
+          "example" : "https://creativecommons.org/licenses/by/3.0/no/",
+          "description" : "The license that applies to this content."
+        },
+        "createdAt" : {
+          "type" : "string",
+          "example" : "2007-11-06T16:34:41.000Z",
+          "description" : "The time at which this document was created (RFC 3339)."
+        },
+        "queryTime" : {
+          "type" : "string",
+          "example" : "0.025",
+          "description" : "The time, in seconds, that this document took to generate."
+        },
+        "currentItemCount" : {
+          "type" : "integer",
+          "format" : "int64",
+          "example" : 3456,
+          "description" : "The current number of items in this result set."
+        },
+        "itemsPerPage" : {
+          "type" : "integer",
+          "format" : "int64",
+          "example" : 1000,
+          "description" : "The maximum number of items in a result set."
+        },
+        "offset" : {
+          "type" : "integer",
+          "format" : "int64",
+          "example" : 2000,
+          "description" : "The offset of the first item in the result set. The Frost API uses a zero-base index."
+        },
+        "totalItemCount" : {
+          "type" : "integer",
+          "format" : "int64",
+          "example" : 1000,
+          "description" : "The total number of items in this specific result set."
+        },
+        "nextLink" : {
+          "type" : "string",
+          "format" : "url",
+          "example" : "https://frost.met.no/resource/v0.jsonld?param=example_param&offset=3000",
+          "description" : "The next link indicates how more data can be retrieved. It points to the URI to load the next set of data."
+        },
+        "previousLink" : {
+          "type" : "string",
+          "format" : "url",
+          "example" : "https://frost.met.no/resource/v0.jsonld?param=example_param&offset=1000",
+          "description" : "The previous link indicates how more data can be retrieved. It points to the URI to load the previous set of data."
+        },
+        "currentLink" : {
+          "type" : "string",
+          "format" : "url",
+          "example" : "https://frost.met.no/resource/v0.jsonld?param=example_param&offset=2000",
+          "description" : "The current link indicates the URI that was used to generate the current API response"
+        },
+        "data" : {
+          "type" : "array",
+          "description" : "Container for all the data from the response.",
+          "items" : {
+            "$ref" : "#/definitions/ClimateNormalsAvailable"
+          }
+        }
+      },
+      "description" : "Data response for an available metadata combination for climate normals"
+    },
+    "Location" : {
+      "type" : "object",
+      "properties" : {
+        "name" : {
+          "type" : "string",
+          "example" : "Roa",
+          "description" : "The name of the geographic feature."
+        },
+        "feature" : {
+          "type" : "string",
+          "example" : "Small town",
+          "description" : "The type of the named geographic feature."
+        },
+        "geometry" : {
+          "description" : "Spatial location data for the geographic feature.",
+          "$ref" : "#/definitions/Point"
+        }
+      }
+    },
+    "LocationResponse" : {
+      "type" : "object",
+      "properties" : {
+        "@context" : {
+          "type" : "string",
+          "format" : "url",
+          "example" : "https://frost.met.no/schema",
+          "description" : "The Json-LD context."
+        },
+        "@type" : {
+          "type" : "string",
+          "example" : "LocationResponse",
+          "description" : "The object type."
+        },
+        "apiVersion" : {
+          "type" : "string",
+          "example" : "v0",
+          "description" : "The version of the API that generated this response."
+        },
+        "license" : {
+          "type" : "string",
+          "format" : "url",
+          "example" : "https://creativecommons.org/licenses/by/3.0/no/",
+          "description" : "The license that applies to this content."
+        },
+        "createdAt" : {
+          "type" : "string",
+          "example" : "2007-11-06T16:34:41.000Z",
+          "description" : "The time at which this document was created (RFC 3339)."
+        },
+        "queryTime" : {
+          "type" : "string",
+          "example" : "0.025",
+          "description" : "The time, in seconds, that this document took to generate."
+        },
+        "currentItemCount" : {
+          "type" : "integer",
+          "format" : "int64",
+          "example" : 3456,
+          "description" : "The current number of items in this result set."
+        },
+        "itemsPerPage" : {
+          "type" : "integer",
+          "format" : "int64",
+          "example" : 1000,
+          "description" : "The maximum number of items in a result set."
+        },
+        "offset" : {
+          "type" : "integer",
+          "format" : "int64",
+          "example" : 2000,
+          "description" : "The offset of the first item in the result set. The Frost API uses a zero-base index."
+        },
+        "totalItemCount" : {
+          "type" : "integer",
+          "format" : "int64",
+          "example" : 1000,
+          "description" : "The total number of items in this specific result set."
+        },
+        "nextLink" : {
+          "type" : "string",
+          "format" : "url",
+          "example" : "https://frost.met.no/resource/v0.jsonld?param=example_param&offset=3000",
+          "description" : "The next link indicates how more data can be retrieved. It points to the URI to load the next set of data."
+        },
+        "previousLink" : {
+          "type" : "string",
+          "format" : "url",
+          "example" : "https://frost.met.no/resource/v0.jsonld?param=example_param&offset=1000",
+          "description" : "The previous link indicates how more data can be retrieved. It points to the URI to load the previous set of data."
+        },
+        "currentLink" : {
+          "type" : "string",
+          "format" : "url",
+          "example" : "https://frost.met.no/resource/v0.jsonld?param=example_param&offset=2000",
+          "description" : "The current link indicates the URI that was used to generate the current API response"
+        },
+        "data" : {
+          "type" : "array",
+          "description" : "Container for all the data from the response.",
+          "items" : {
+            "$ref" : "#/definitions/Location"
+          }
+        }
+      },
+      "description" : "Data response for location metadata."
+    },
+    "Point" : {
+      "type" : "object",
+      "properties" : {
+        "@type" : {
+          "type" : "string",
+          "example" : "Point",
+          "description" : "The type of the geometry object"
+        },
+        "coordinates" : {
+          "type" : "array",
+          "example" : "59.9423, 10.72",
+          "description" : "Coordinates of the geometry object",
+          "items" : {
+            "type" : "number"
+          }
+        }
+      }
+    },
+    "IDFValue" : {
+      "type" : "object",
+      "properties" : {
+        "intensity" : {
+          "type" : "number",
+          "format" : "double",
+          "example" : 322.8,
+          "description" : "Intensity."
+        },
+        "duration" : {
+          "type" : "number",
+          "format" : "double",
+          "example" : 2.0,
+          "description" : "Duration in minutes."
+        },
+        "frequency" : {
+          "type" : "integer",
+          "format" : "int32",
+          "example" : 5,
+          "description" : "Frequency in years."
+        }
+      },
+      "description" : "A single IDF value."
+    },
+    "RainfallIDF" : {
+      "type" : "object",
+      "properties" : {
+        "sourceId" : {
+          "type" : "string",
+          "example" : "SN18700",
+          "description" : "The Frost API id of the source."
+        },
+        "version" : {
+          "type" : "string",
+          "example" : "1",
+          "description" : "The version of the source (if applicable)."
+        },
+        "geometry" : {
+          "description" : "Horizontal position (in longitude and latitude degrees) of the IDF location.",
+          "$ref" : "#/definitions/Point"
+        },
+        "masl" : {
+          "type" : "object",
+          "example" : "179",
+          "description" : "Elevation (in meters above sea level) of the IDF location."
+        },
+        "operatingPeriods" : {
+          "type" : "array",
+          "example" : "[\"1974-05-29T12:00:00Z/1977-09-03T06:00:00Z\", \"1982-06-01T12:00:00/2016-09-08T12:00:00Z\"]",
+          "description" : "Operating periods of the source.",
+          "items" : {
+            "type" : "string"
+          }
+        },
+        "numberOfSeasons" : {
+          "type" : "object",
+          "example" : "42",
+          "description" : "The number of seasons the source has been operational."
+        },
+        "firstYearOfPeriod" : {
+          "type" : "object",
+          "example" : "1968",
+          "description" : "The first year of the data period."
+        },
+        "lastYearOfPeriod" : {
+          "type" : "object",
+          "example" : "2017",
+          "description" : "The last year of the data period."
+        },
+        "unit" : {
+          "type" : "string",
+          "example" : "l/s*Ha",
+          "description" : "The unit of measure for the intensity. The default unit is litre/second*Hectar."
+        },
+        "values" : {
+          "type" : "array",
+          "description" : "The values of the source and location.",
+          "items" : {
+            "$ref" : "#/definitions/IDFValue"
+          }
+        }
+      },
+      "description" : "Metadata for a single rainfall IDF location."
+    },
+    "RainfallIDFResponse" : {
+      "type" : "object",
+      "properties" : {
+        "@context" : {
+          "type" : "string",
+          "format" : "url",
+          "example" : "https://frost.met.no/schema",
+          "description" : "The Json-LD context."
+        },
+        "@type" : {
+          "type" : "string",
+          "example" : "RainfallIDFResponse",
+          "description" : "The object type."
+        },
+        "apiVersion" : {
+          "type" : "string",
+          "example" : "v0",
+          "description" : "The version of the API that generated this response."
+        },
+        "license" : {
+          "type" : "string",
+          "format" : "url",
+          "example" : "https://creativecommons.org/licenses/by/3.0/no/",
+          "description" : "The license that applies to this content."
+        },
+        "createdAt" : {
+          "type" : "string",
+          "example" : "2007-11-06T16:34:41.000Z",
+          "description" : "The time at which this document was created (RFC 3339)."
+        },
+        "queryTime" : {
+          "type" : "string",
+          "example" : "0.025",
+          "description" : "The time, in seconds, that this document took to generate."
+        },
+        "currentItemCount" : {
+          "type" : "integer",
+          "format" : "int64",
+          "example" : 3456,
+          "description" : "The current number of items in this result set."
+        },
+        "itemsPerPage" : {
+          "type" : "integer",
+          "format" : "int64",
+          "example" : 1000,
+          "description" : "The maximum number of items in a result set."
+        },
+        "offset" : {
+          "type" : "integer",
+          "format" : "int64",
+          "example" : 2000,
+          "description" : "The offset of the first item in the result set. The Frost API uses a zero-base index."
+        },
+        "totalItemCount" : {
+          "type" : "integer",
+          "format" : "int64",
+          "example" : 1000,
+          "description" : "The total number of items in this specific result set."
+        },
+        "nextLink" : {
+          "type" : "string",
+          "format" : "url",
+          "example" : "https://frost.met.no/resource/v0.jsonld?param=example_param&offset=3000",
+          "description" : "The next link indicates how more data can be retrieved. It points to the URI to load the next set of data."
+        },
+        "previousLink" : {
+          "type" : "string",
+          "format" : "url",
+          "example" : "https://frost.met.no/resource/v0.jsonld?param=example_param&offset=1000",
+          "description" : "The previous link indicates how more data can be retrieved. It points to the URI to load the previous set of data."
+        },
+        "currentLink" : {
+          "type" : "string",
+          "format" : "url",
+          "example" : "https://frost.met.no/resource/v0.jsonld?param=example_param&offset=2000",
+          "description" : "The current link indicates the URI that was used to generate the current API response"
+        },
+        "data" : {
+          "type" : "array",
+          "description" : "Container for all the data from the response.",
+          "items" : {
+            "$ref" : "#/definitions/RainfallIDF"
+          }
+        }
+      },
+      "description" : "Data response for rainfall IDF."
+    },
+    "RainfallIDFSource" : {
+      "type" : "object",
+      "properties" : {
+        "sourceId" : {
+          "type" : "string",
+          "example" : "SN18700",
+          "description" : "The Frost API id of the source."
+        },
+        "version" : {
+          "type" : "string",
+          "example" : "1",
+          "description" : "The version of the source (if applicable)."
+        },
+        "validFrom" : {
+          "type" : "string",
+          "example" : "[\"1974-05-29T12:00:00Z\"]",
+          "description" : "Start of the earliest operating period of the source."
+        },
+        "validTo" : {
+          "type" : "string",
+          "example" : "[\"2016-09-08T12:00:00Z\"]",
+          "description" : "End of the latest operating period of the source."
+        },
+        "numberOfSeasons" : {
+          "type" : "object",
+          "example" : "42",
+          "description" : "The number of seasons the source has been operational."
+        },
+        "firstYearOfPeriod" : {
+          "type" : "object",
+          "example" : "1968",
+          "description" : "The first year of the data period."
+        },
+        "lastYearOfPeriod" : {
+          "type" : "object",
+          "example" : "2017",
+          "description" : "The last year of the data period."
+        }
+      },
+      "description" : "Metadata for a single rainfall IDF source."
+    },
+    "RainfallIDFSourcesResponse" : {
+      "type" : "object",
+      "properties" : {
+        "@context" : {
+          "type" : "string",
+          "format" : "url",
+          "example" : "https://frost.met.no/schema",
+          "description" : "The Json-LD context."
+        },
+        "@type" : {
+          "type" : "string",
+          "example" : "RainfallIDFResponse",
+          "description" : "The object type."
+        },
+        "apiVersion" : {
+          "type" : "string",
+          "example" : "v0",
+          "description" : "The version of the API that generated this response."
+        },
+        "license" : {
+          "type" : "string",
+          "format" : "url",
+          "example" : "https://creativecommons.org/licenses/by/3.0/no/",
+          "description" : "The license that applies to this content."
+        },
+        "createdAt" : {
+          "type" : "string",
+          "example" : "2007-11-06T16:34:41.000Z",
+          "description" : "The time at which this document was created (RFC 3339)."
+        },
+        "queryTime" : {
+          "type" : "string",
+          "example" : "0.025",
+          "description" : "The time, in seconds, that this document took to generate."
+        },
+        "currentItemCount" : {
+          "type" : "integer",
+          "format" : "int64",
+          "example" : 3456,
+          "description" : "The current number of items in this result set."
+        },
+        "itemsPerPage" : {
+          "type" : "integer",
+          "format" : "int64",
+          "example" : 1000,
+          "description" : "The maximum number of items in a result set."
+        },
+        "offset" : {
+          "type" : "integer",
+          "format" : "int64",
+          "example" : 2000,
+          "description" : "The offset of the first item in the result set. The Frost API uses a zero-base index."
+        },
+        "totalItemCount" : {
+          "type" : "integer",
+          "format" : "int64",
+          "example" : 1000,
+          "description" : "The total number of items in this specific result set."
+        },
+        "nextLink" : {
+          "type" : "string",
+          "format" : "url",
+          "example" : "https://frost.met.no/resource/v0.jsonld?param=example_param&offset=3000",
+          "description" : "The next link indicates how more data can be retrieved. It points to the URI to load the next set of data."
+        },
+        "previousLink" : {
+          "type" : "string",
+          "format" : "url",
+          "example" : "https://frost.met.no/resource/v0.jsonld?param=example_param&offset=1000",
+          "description" : "The previous link indicates how more data can be retrieved. It points to the URI to load the previous set of data."
+        },
+        "currentLink" : {
+          "type" : "string",
+          "format" : "url",
+          "example" : "https://frost.met.no/resource/v0.jsonld?param=example_param&offset=2000",
+          "description" : "The current link indicates the URI that was used to generate the current API response"
+        },
+        "data" : {
+          "type" : "array",
+          "description" : "Container for all the data from the response.",
+          "items" : {
+            "$ref" : "#/definitions/RainfallIDFSource"
+          }
+        }
+      },
+      "description" : "Data response for available rainfall IDF sources."
+    },
+    "CalcMethod" : {
+      "type" : "object",
+      "properties" : {
+        "baseName" : {
+          "type" : "string",
+          "example" : "wind_speed",
+          "description" : "The base name of the element"
+        },
+        "method" : {
+          "type" : "string",
+          "example" : "mean",
+          "description" : "The primary method."
+        },
+        "innerMethod" : {
+          "type" : "string",
+          "example" : "max",
+          "description" : "The inner method."
+        },
+        "period" : {
+          "type" : "string",
+          "example" : "P1M",
+          "description" : "The period over which the primary method applies."
+        },
+        "innerPeriod" : {
+          "type" : "string",
+          "example" : "P1D",
+          "description" : "The period over which the inner method applies."
+        },
+        "addition" : {
+          "type" : "string",
+          "example" : "5.0",
+          "description" : "The addition applicable to the primary method."
+        },
+        "methodDescription" : {
+          "type" : "string",
+          "description" : "The description of the primary method."
+        },
+        "innerMethodDescription" : {
+          "type" : "string",
+          "description" : "The description of the inner method."
+        },
+        "methodUnit" : {
+          "type" : "string",
+          "description" : "The unit of the primary method."
+        },
+        "innerMethodUnit" : {
+          "type" : "string",
+          "description" : "The unit of the inner method."
+        }
+      },
+      "description" : "The calculation method for an element."
+    },
+    "CfConvention" : {
+      "type" : "object",
+      "properties" : {
+        "standardName" : {
+          "type" : "string",
+          "example" : "air_temperature",
+          "description" : "The CF standard name of the element."
+        },
+        "cellMethod" : {
+          "type" : "string",
+          "example" : "null",
+          "description" : "The CF cell method(s) for the element, if any."
+        },
+        "unit" : {
+          "type" : "string",
+          "example" : "kelvin",
+          "description" : "The unit of the CF element."
+        },
+        "version" : {
+          "type" : "string",
+          "example" : "44",
+          "description" : "The CF version."
+        }
+      },
+      "description" : "The CF convention equivalent of the element."
+    },
+    "Element" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "string",
+          "example" : "min(air_temperature PT12H)",
+          "description" : "The Frost API id of the element."
+        },
+        "name" : {
+          "type" : "string",
+          "example" : "Minimum temperature (12 hours)",
+          "description" : "The name of the element."
+        },
+        "description" : {
+          "type" : "string",
+          "example" : "Lowest observed temperature last 12 hours",
+          "description" : "The description of the element."
+        },
+        "unit" : {
+          "type" : "string",
+          "example" : "degC",
+          "description" : "The default unit, as used for data (UDUNITS notation). *code* if the unit is described using a code table."
+        },
+        "codeTable" : {
+          "type" : "string",
+          "example" : "beaufort_scale",
+          "description" : "If the unit is a *code*, the codetable that describes the codes used."
+        },
+        "status" : {
+          "type" : "string",
+          "example" : "CF compatible",
+          "description" : "The status of the element; one of 'CF compatible', 'in review', 'MetNo local convention', or 'test'"
+        },
+        "calculationMethod" : {
+          "description" : "The calculation method of the element.",
+          "$ref" : "#/definitions/CalcMethod"
+        },
+        "category" : {
+          "type" : "string",
+          "description" : "The category of the element."
+        },
+        "timeOffsets" : {
+          "description" : "The time offsets of the element.",
+          "$ref" : "#/definitions/TimeOffsets"
+        },
+        "sensorLevels" : {
+          "description" : "The sensor levels of the element.",
+          "$ref" : "#/definitions/SensorLevels"
+        },
+        "oldConvention" : {
+          "description" : "The old form of the element.",
+          "$ref" : "#/definitions/OldMetNoConvention"
+        },
+        "cfConvention" : {
+          "description" : "The CF convention equivalent of the element (omitted if no such equivalent exists).",
+          "$ref" : "#/definitions/CfConvention"
+        }
+      },
+      "description" : "Metadata for a single element."
+    },
+    "ElementResponse" : {
+      "type" : "object",
+      "properties" : {
+        "@context" : {
+          "type" : "string",
+          "format" : "url",
+          "example" : "https://frost.met.no/schema",
+          "description" : "The Json-LD context."
+        },
+        "@type" : {
+          "type" : "string",
+          "example" : "ElementResponse",
+          "description" : "The object type."
+        },
+        "apiVersion" : {
+          "type" : "string",
+          "example" : "v0",
+          "description" : "The version of the API that generated this response."
+        },
+        "license" : {
+          "type" : "string",
+          "format" : "url",
+          "example" : "https://creativecommons.org/licenses/by/3.0/no/",
+          "description" : "The license that applies to this content."
+        },
+        "createdAt" : {
+          "type" : "string",
+          "example" : "2007-11-06T16:34:41.000Z",
+          "description" : "The time at which this document was created (RFC 3339)."
+        },
+        "queryTime" : {
+          "type" : "string",
+          "example" : "0.025",
+          "description" : "The time, in seconds, that this document took to generate."
+        },
+        "currentItemCount" : {
+          "type" : "integer",
+          "format" : "int64",
+          "example" : 3456,
+          "description" : "The current number of items in this result set."
+        },
+        "itemsPerPage" : {
+          "type" : "integer",
+          "format" : "int64",
+          "example" : 1000,
+          "description" : "The maximum number of items in a result set."
+        },
+        "offset" : {
+          "type" : "integer",
+          "format" : "int64",
+          "example" : 2000,
+          "description" : "The offset of the first item in the result set. The Frost API uses a zero-base index."
+        },
+        "totalItemCount" : {
+          "type" : "integer",
+          "format" : "int64",
+          "example" : 1000,
+          "description" : "The total number of items in this specific result set."
+        },
+        "nextLink" : {
+          "type" : "string",
+          "format" : "url",
+          "example" : "https://frost.met.no/resource/v0.jsonld?param=example_param&offset=3000",
+          "description" : "The next link indicates how more data can be retrieved. It points to the URI to load the next set of data."
+        },
+        "previousLink" : {
+          "type" : "string",
+          "format" : "url",
+          "example" : "https://frost.met.no/resource/v0.jsonld?param=example_param&offset=1000",
+          "description" : "The previous link indicates how more data can be retrieved. It points to the URI to load the previous set of data."
+        },
+        "currentLink" : {
+          "type" : "string",
+          "format" : "url",
+          "example" : "https://frost.met.no/resource/v0.jsonld?param=example_param&offset=2000",
+          "description" : "The current link indicates the URI that was used to generate the current API response"
+        },
+        "data" : {
+          "type" : "array",
+          "description" : "Container for all the data from the response.",
+          "items" : {
+            "$ref" : "#/definitions/Element"
+          }
+        }
+      },
+      "description" : "Data response for element metadata."
+    },
+    "OldMetNoConvention" : {
+      "type" : "object",
+      "properties" : {
+        "elementCodes" : {
+          "type" : "array",
+          "example" : "TA",
+          "description" : "The old element code(s) of the element.",
+          "items" : {
+            "type" : "string"
+          }
+        },
+        "unit" : {
+          "type" : "string",
+          "example" : "degC",
+          "description" : "The unit of the old element code(s)."
+        }
+      },
+      "description" : "The Met.no old element code equivalent(s) of the element."
+    },
+    "SensorLevels" : {
+      "type" : "object",
+      "properties" : {
+        "levelType" : {
+          "type" : "string",
+          "example" : "height_above_ground",
+          "description" : "The level type."
+        },
+        "unit" : {
+          "type" : "string",
+          "example" : "m",
+          "description" : "The level unit."
+        },
+        "defaultValue" : {
+          "type" : "object",
+          "description" : "The default level value."
+        },
+        "values" : {
+          "type" : "array",
+          "description" : "The available level values.",
+          "items" : {
+            "type" : "number"
+          }
+        }
+      },
+      "description" : "The default level and available levels for a specific sensor level type."
+    },
+    "TimeOffsets" : {
+      "type" : "object",
+      "properties" : {
+        "defaultValue" : {
+          "type" : "string",
+          "description" : "The default time offset."
+        },
+        "values" : {
+          "type" : "array",
+          "description" : "The available time offsets.",
+          "items" : {
+            "type" : "string"
+          }
+        }
+      },
+      "description" : "The time offsets for the element."
+    },
+    "CodeTable" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "string",
+          "example" : "beaufort_wind_scale",
+          "description" : "The code table name."
+        },
+        "description" : {
+          "type" : "string",
+          "description" : "The main description."
+        },
+        "additionalInfo" : {
+          "type" : "string",
+          "description" : "Additional info."
+        },
+        "size" : {
+          "type" : "object",
+          "description" : "The number of values."
+        },
+        "values" : {
+          "type" : "array",
+          "description" : "The values.",
+          "items" : {
+            "$ref" : "#/definitions/CodeTableValue"
+          }
+        }
+      },
+      "description" : "Metadata for a single code table."
+    },
+    "CodeTableResponse" : {
+      "type" : "object",
+      "properties" : {
+        "@context" : {
+          "type" : "string",
+          "format" : "url",
+          "example" : "https://frost.met.no/schema",
+          "description" : "The Json-LD context."
+        },
+        "@type" : {
+          "type" : "string",
+          "example" : "CodeTableResponse",
+          "description" : "The object type."
+        },
+        "apiVersion" : {
+          "type" : "string",
+          "example" : "v0",
+          "description" : "The version of the API that generated this response."
+        },
+        "license" : {
+          "type" : "string",
+          "format" : "url",
+          "example" : "https://creativecommons.org/licenses/by/3.0/no/",
+          "description" : "The license that applies to this content."
+        },
+        "createdAt" : {
+          "type" : "string",
+          "example" : "2007-11-06T16:34:41.000Z",
+          "description" : "The time at which this document was created (RFC 3339)."
+        },
+        "queryTime" : {
+          "type" : "string",
+          "example" : "0.025",
+          "description" : "The time, in seconds, that this document took to generate."
+        },
+        "currentItemCount" : {
+          "type" : "integer",
+          "format" : "int64",
+          "example" : 3456,
+          "description" : "The current number of items in this result set."
+        },
+        "itemsPerPage" : {
+          "type" : "integer",
+          "format" : "int64",
+          "example" : 1000,
+          "description" : "The maximum number of items in a result set."
+        },
+        "offset" : {
+          "type" : "integer",
+          "format" : "int64",
+          "example" : 2000,
+          "description" : "The offset of the first item in the result set. The Frost API uses a zero-base index."
+        },
+        "totalItemCount" : {
+          "type" : "integer",
+          "format" : "int64",
+          "example" : 1000,
+          "description" : "The total number of items in this specific result set."
+        },
+        "nextLink" : {
+          "type" : "string",
+          "format" : "url",
+          "example" : "https://frost.met.no/resource/v0.jsonld?param=example_param&offset=3000",
+          "description" : "The next link indicates how more data can be retrieved. It points to the URI to load the next set of data."
+        },
+        "previousLink" : {
+          "type" : "string",
+          "format" : "url",
+          "example" : "https://frost.met.no/resource/v0.jsonld?param=example_param&offset=1000",
+          "description" : "The previous link indicates how more data can be retrieved. It points to the URI to load the previous set of data."
+        },
+        "currentLink" : {
+          "type" : "string",
+          "format" : "url",
+          "example" : "https://frost.met.no/resource/v0.jsonld?param=example_param&offset=2000",
+          "description" : "The current link indicates the URI that was used to generate the current API response"
+        },
+        "data" : {
+          "type" : "array",
+          "description" : "Container for all the data from the response.",
+          "items" : {
+            "$ref" : "#/definitions/CodeTable"
+          }
+        }
+      },
+      "description" : "Data response for code table metadata."
+    },
+    "CodeTableValue" : {
+      "type" : "object",
+      "properties" : {
+        "value" : {
+          "type" : "string",
+          "example" : "10",
+          "description" : "The code table value."
+        },
+        "description" : {
+          "type" : "string",
+          "description" : "The main description."
+        },
+        "additionalInfo" : {
+          "type" : "string",
+          "description" : "Additional info."
+        }
+      },
+      "description" : "Metadata for a single code table value."
+    },
+    "Source" : {
+      "type" : "object",
+      "properties" : {
+        "@type" : {
+          "type" : "string",
+          "example" : "SensorSystem",
+          "description" : "The source type of the Source."
+        },
+        "id" : {
+          "type" : "string",
+          "example" : "SN18700",
+          "description" : "The Frost API id of the source."
+        },
+        "name" : {
+          "type" : "string",
+          "example" : "OSLO - BLINDERN",
+          "description" : "The name of the source."
+        },
+        "shortName" : {
+          "type" : "string",
+          "example" : "Blindern",
+          "description" : "The short name of the source."
+        },
+        "country" : {
+          "type" : "string",
+          "example" : "Norway",
+          "description" : "The country affiliation of the source."
+        },
+        "countryCode" : {
+          "type" : "string",
+          "example" : "NO",
+          "description" : "The ISO 3166-1 alpha-2 code of the country."
+        },
+        "wmoId" : {
+          "type" : "object",
+          "example" : "1492",
+          "description" : "The assigned WMO number for a SensorSystem, if one exists."
+        },
+        "geometry" : {
+          "description" : "Spatial location data for the source.",
+          "$ref" : "#/definitions/Point"
+        },
+        "distance" : {
+          "type" : "object",
+          "example" : "40.575391309",
+          "description" : "The distance (in kilometers) from a reference point."
+        },
+        "masl" : {
+          "type" : "object",
+          "example" : "94",
+          "description" : "The elevation of the source in meters above sea level."
+        },
+        "validFrom" : {
+          "type" : "string",
+          "example" : "1974-05-29T00:00:00.000Z",
+          "description" : "The datetime from which the source is valid."
+        },
+        "validTo" : {
+          "type" : "string",
+          "example" : "2006-09-01T00:00:00.000Z",
+          "description" : "The datetime to which the source was valid (if no longer valid)."
+        },
+        "county" : {
+          "type" : "string",
+          "example" : "Oppland",
+          "description" : "County name."
+        },
+        "countyId" : {
+          "type" : "object",
+          "example" : "5",
+          "description" : "County id."
+        },
+        "municipality" : {
+          "type" : "string",
+          "example" : "Lillehammer",
+          "description" : "Municipality name."
+        },
+        "municipalityId" : {
+          "type" : "object",
+          "example" : "501",
+          "description" : "Municipality id."
+        },
+        "ontologyId" : {
+          "type" : "object",
+          "example" : "0",
+          "description" : "Ontology id"
+        },
+        "stationHolders" : {
+          "type" : "array",
+          "example" : "[ \"MET.NO\", \"STATENS VEGVESEN\" ]",
+          "description" : "Station holders.",
+          "items" : {
+            "type" : "string"
+          }
+        },
+        "externalIds" : {
+          "type" : "array",
+          "example" : "[ \"01466\", \"10.249.0.126\", \"1466\", \"ENKJ\" ]",
+          "description" : "External ids.",
+          "items" : {
+            "type" : "string"
+          }
+        },
+        "icaoCodes" : {
+          "type" : "array",
+          "example" : "[ \"ESNZ\", \"ESPC\" ]",
+          "description" : "ICAO codes.",
+          "items" : {
+            "type" : "string"
+          }
+        },
+        "shipCodes" : {
+          "type" : "array",
+          "example" : "[ \"JWBR\", \"LMXQ\" ]",
+          "description" : "Ship codes.",
+          "items" : {
+            "type" : "string"
+          }
+        },
+        "wigosId" : {
+          "type" : "string",
+          "example" : "0-578-0-18700",
+          "description" : "WIGOS id."
+        }
+      },
+      "description" : "Metadata for a single source."
+    },
+    "SourceResponse" : {
+      "type" : "object",
+      "properties" : {
+        "@context" : {
+          "type" : "string",
+          "format" : "url",
+          "example" : "https://frost.met.no/schema",
+          "description" : "The Json-LD context."
+        },
+        "@type" : {
+          "type" : "string",
+          "example" : "SourceResponse",
+          "description" : "The object type."
+        },
+        "apiVersion" : {
+          "type" : "string",
+          "example" : "v0",
+          "description" : "The version of the API that generated this response."
+        },
+        "license" : {
+          "type" : "string",
+          "format" : "url",
+          "example" : "https://creativecommons.org/licenses/by/3.0/no/",
+          "description" : "The license that applies to this content."
+        },
+        "createdAt" : {
+          "type" : "string",
+          "example" : "2007-11-06T16:34:41.000Z",
+          "description" : "The time at which this document was created (RFC 3339)."
+        },
+        "queryTime" : {
+          "type" : "string",
+          "example" : "0.025",
+          "description" : "The time, in seconds, that this document took to generate."
+        },
+        "currentItemCount" : {
+          "type" : "integer",
+          "format" : "int64",
+          "example" : 3456,
+          "description" : "The current number of items in this result set."
+        },
+        "itemsPerPage" : {
+          "type" : "integer",
+          "format" : "int64",
+          "example" : 1000,
+          "description" : "The maximum number of items in a result set."
+        },
+        "offset" : {
+          "type" : "integer",
+          "format" : "int64",
+          "example" : 2000,
+          "description" : "The offset of the first item in the result set. The Frost API uses a zero-base index."
+        },
+        "totalItemCount" : {
+          "type" : "integer",
+          "format" : "int64",
+          "example" : 1000,
+          "description" : "The total number of items in this specific result set."
+        },
+        "nextLink" : {
+          "type" : "string",
+          "format" : "url",
+          "example" : "https://frost.met.no/resource/v0.jsonld?param=example_param&offset=3000",
+          "description" : "The next link indicates how more data can be retrieved. It points to the URI to load the next set of data."
+        },
+        "previousLink" : {
+          "type" : "string",
+          "format" : "url",
+          "example" : "https://frost.met.no/resource/v0.jsonld?param=example_param&offset=1000",
+          "description" : "The previous link indicates how more data can be retrieved. It points to the URI to load the previous set of data."
+        },
+        "currentLink" : {
+          "type" : "string",
+          "format" : "url",
+          "example" : "https://frost.met.no/resource/v0.jsonld?param=example_param&offset=2000",
+          "description" : "The current link indicates the URI that was used to generate the current API response"
+        },
+        "data" : {
+          "type" : "array",
+          "description" : "Container for all the data from the response.",
+          "items" : {
+            "$ref" : "#/definitions/Source"
+          }
+        }
+      },
+      "description" : "Data response for source metadata."
+    },
+    "Level" : {
+      "type" : "object",
+      "properties" : {
+        "levelType" : {
+          "type" : "string",
+          "example" : "height_above_ground",
+          "description" : "The reference type of the level value."
+        },
+        "unit" : {
+          "type" : "string",
+          "example" : "m",
+          "description" : "The unit of measurement of the level value."
+        },
+        "value" : {
+          "type" : "object",
+          "example" : "10",
+          "description" : "The level value."
+        }
+      }
+    },
+    "ObservationTimeSeries" : {
+      "type" : "object",
+      "properties" : {
+        "sourceId" : {
+          "type" : "string",
+          "example" : "SN18700",
+          "description" : "The sourceId at which this series of values were observed."
+        },
+        "geometry" : {
+          "description" : "Spatial location of the data when it was observed (if known).",
+          "$ref" : "#/definitions/Point"
+        },
+        "level" : {
+          "description" : "Sensor level (if known).",
+          "$ref" : "#/definitions/Level"
+        },
+        "validFrom" : {
+          "type" : "string",
+          "example" : "1974-05-29",
+          "description" : "The datetime from which data exists in this time series."
+        },
+        "validTo" : {
+          "type" : "string",
+          "example" : "1977-05-16",
+          "description" : "The datetime to which data exists in this time series. Null if data is still being added to the time series."
+        },
+        "timeOffset" : {
+          "type" : "string",
+          "example" : "PT18H",
+          "description" : "The offset from the validFrom datetime. Add the offset to validFrom to get the reference time of the first observation in the time series."
+        },
+        "timeResolution" : {
+          "type" : "string",
+          "example" : "P1D",
+          "description" : "The time between consecutive observations in the time series. Given the reference time of an observation, add the timeResolution to get the next observation in the time series."
+        },
+        "timeSeriesId" : {
+          "type" : "object",
+          "example" : "0",
+          "description" : "The internal ID of the time series."
+        },
+        "elementId" : {
+          "type" : "string",
+          "example" : "air_temperature",
+          "description" : "The Frost API ID of the element observed."
+        },
+        "unit" : {
+          "type" : "string",
+          "example" : "degC",
+          "description" : "The unit of measure of the observed data. *code* if the unit is described using a code table."
+        },
+        "codeTable" : {
+          "type" : "string",
+          "example" : "beaufort_scale",
+          "description" : "If the unit is a *code*, the codetable that describes the codes used."
+        },
+        "performanceCategory" : {
+          "type" : "string",
+          "example" : "A",
+          "description" : "The performance category."
+        },
+        "exposureCategory" : {
+          "type" : "string",
+          "example" : "1",
+          "description" : "The exposure category."
+        },
+        "status" : {
+          "type" : "string",
+          "description" : "The status of the time series."
+        },
+        "uri" : {
+          "type" : "string",
+          "description" : "The URI that can be used to retrieve this time series."
+        },
+        "userGroupIds" : {
+          "type" : "array",
+          "items" : {
+            "type" : "number"
+          }
+        }
+      },
+      "description" : "Recorded time series that exist for these parameters."
+    },
+    "ObservationTimeSeriesResponse" : {
+      "type" : "object",
+      "properties" : {
+        "@context" : {
+          "type" : "string",
+          "format" : "url",
+          "example" : "https://frost.met.no/schema",
+          "description" : "The Json-LD context."
+        },
+        "@type" : {
+          "type" : "string",
+          "example" : "ObservationTimeSeriesResponse",
+          "description" : "The object type."
+        },
+        "apiVersion" : {
+          "type" : "string",
+          "example" : "v0",
+          "description" : "The version of the API that generated this response."
+        },
+        "license" : {
+          "type" : "string",
+          "format" : "url",
+          "example" : "https://creativecommons.org/licenses/by/3.0/no/",
+          "description" : "The license that applies to this content."
+        },
+        "createdAt" : {
+          "type" : "string",
+          "example" : "2007-11-06T16:34:41.000Z",
+          "description" : "The time at which this document was created (RFC 3339)."
+        },
+        "queryTime" : {
+          "type" : "string",
+          "example" : "0.025",
+          "description" : "The time, in seconds, that this document took to generate."
+        },
+        "currentItemCount" : {
+          "type" : "integer",
+          "format" : "int64",
+          "example" : 3456,
+          "description" : "The current number of items in this result set."
+        },
+        "itemsPerPage" : {
+          "type" : "integer",
+          "format" : "int64",
+          "example" : 1000,
+          "description" : "The maximum number of items in a result set."
+        },
+        "offset" : {
+          "type" : "integer",
+          "format" : "int64",
+          "example" : 2000,
+          "description" : "The offset of the first item in the result set. The Frost API uses a zero-base index."
+        },
+        "totalItemCount" : {
+          "type" : "integer",
+          "format" : "int64",
+          "example" : 1000,
+          "description" : "The total number of items in this specific result set."
+        },
+        "nextLink" : {
+          "type" : "string",
+          "format" : "url",
+          "example" : "https://frost.met.no/resource/v0.jsonld?param=example_param&offset=3000",
+          "description" : "The next link indicates how more data can be retrieved. It points to the URI to load the next set of data."
+        },
+        "previousLink" : {
+          "type" : "string",
+          "format" : "url",
+          "example" : "https://frost.met.no/resource/v0.jsonld?param=example_param&offset=1000",
+          "description" : "The previous link indicates how more data can be retrieved. It points to the URI to load the previous set of data."
+        },
+        "currentLink" : {
+          "type" : "string",
+          "format" : "url",
+          "example" : "https://frost.met.no/resource/v0.jsonld?param=example_param&offset=2000",
+          "description" : "The current link indicates the URI that was used to generate the current API response"
+        },
+        "data" : {
+          "type" : "array",
+          "description" : "Container for all the data from the response.",
+          "items" : {
+            "$ref" : "#/definitions/ObservationTimeSeries"
+          }
+        }
+      },
+      "description" : "Data response for observation time series."
+    },
+    "Observation" : {
+      "type" : "object",
+      "properties" : {
+        "elementId" : {
+          "type" : "string",
+          "example" : "air_temperature",
+          "description" : "The ID of the element being observed."
+        },
+        "value" : {
+          "type" : "string",
+          "example" : "12.7",
+          "description" : "The observed value (either a number or a UTC datetime of the format YYYY-MM-DD hh:mm:ss.sss)."
+        },
+        "origValue" : {
+          "type" : "string",
+          "example" : "12.6",
+          "description" : "The original observed value (either a number or a UTC datetime of the format YYYY-MM-DD hh:mm:ss.sss)."
+        },
+        "unit" : {
+          "type" : "string",
+          "example" : "degC",
+          "description" : "The unit of measurement of the observed value."
+        },
+        "codeTable" : {
+          "type" : "string",
+          "example" : "beaufort_scale",
+          "description" : "If the unit is a *code*, the codetable that describes the codes used."
+        },
+        "level" : {
+          "description" : "The vertical level at which the value was observed (if known).",
+          "$ref" : "#/definitions/Level"
+        },
+        "timeOffset" : {
+          "type" : "string",
+          "example" : "PT6H",
+          "description" : "The offset from referenceTime at which the observation applies."
+        },
+        "timeResolution" : {
+          "type" : "string",
+          "example" : "PT6H",
+          "description" : "The time between consecutive observations in the time series to which the observation belongs."
+        },
+        "timeSeriesId" : {
+          "type" : "object",
+          "example" : "0",
+          "description" : "The internal ID of the time series to which the observation belongs."
+        },
+        "performanceCategory" : {
+          "type" : "string",
+          "example" : "A",
+          "description" : "The performance category of the source when the value was observed."
+        },
+        "exposureCategory" : {
+          "type" : "string",
+          "example" : "1",
+          "description" : "The exposure category of the source when the value was observed."
+        },
+        "qualityCode" : {
+          "type" : "object",
+          "example" : "0",
+          "description" : "The quality control flag of the observed value."
+        },
+        "controlInfo" : {
+          "type" : "string",
+          "example" : "0111000000100010",
+          "description" : "The control info of the observed value."
+        },
+        "dataVersion" : {
+          "type" : "object",
+          "example" : "3",
+          "description" : "The data version of the data value, if one exists (**Note: Currently not available for any observation data)."
+        }
+      },
+      "description" : "A single observation."
+    },
+    "ObservationResponse" : {
+      "type" : "object",
+      "properties" : {
+        "@context" : {
+          "type" : "string",
+          "format" : "url",
+          "example" : "https://frost.met.no/schema",
+          "description" : "The Json-LD context."
+        },
+        "@type" : {
+          "type" : "string",
+          "example" : "ObservationResponse",
+          "description" : "The object type."
+        },
+        "apiVersion" : {
+          "type" : "string",
+          "example" : "v0",
+          "description" : "The version of the API that generated this response."
+        },
+        "license" : {
+          "type" : "string",
+          "format" : "url",
+          "example" : "https://creativecommons.org/licenses/by/3.0/no/",
+          "description" : "The license that applies to this content."
+        },
+        "createdAt" : {
+          "type" : "string",
+          "example" : "2007-11-06T16:34:41.000Z",
+          "description" : "The time at which this document was created (RFC 3339)."
+        },
+        "queryTime" : {
+          "type" : "string",
+          "example" : "0.025",
+          "description" : "The time, in seconds, that this document took to generate."
+        },
+        "currentItemCount" : {
+          "type" : "integer",
+          "format" : "int64",
+          "example" : 3456,
+          "description" : "The current number of items in this result set."
+        },
+        "itemsPerPage" : {
+          "type" : "integer",
+          "format" : "int64",
+          "example" : 1000,
+          "description" : "The maximum number of items in a result set."
+        },
+        "offset" : {
+          "type" : "integer",
+          "format" : "int64",
+          "example" : 2000,
+          "description" : "The offset of the first item in the result set. The Frost API uses a zero-base index."
+        },
+        "totalItemCount" : {
+          "type" : "integer",
+          "format" : "int64",
+          "example" : 1000,
+          "description" : "The total number of items in this specific result set."
+        },
+        "nextLink" : {
+          "type" : "string",
+          "format" : "url",
+          "example" : "https://frost.met.no/resource/v0.jsonld?param=example_param&offset=3000",
+          "description" : "The next link indicates how more data can be retrieved. It points to the URI to load the next set of data."
+        },
+        "previousLink" : {
+          "type" : "string",
+          "format" : "url",
+          "example" : "https://frost.met.no/resource/v0.jsonld?param=example_param&offset=1000",
+          "description" : "The previous link indicates how more data can be retrieved. It points to the URI to load the previous set of data."
+        },
+        "currentLink" : {
+          "type" : "string",
+          "format" : "url",
+          "example" : "https://frost.met.no/resource/v0.jsonld?param=example_param&offset=2000",
+          "description" : "The current link indicates the URI that was used to generate the current API response"
+        },
+        "data" : {
+          "type" : "array",
+          "description" : "Container for all the data from the response.",
+          "items" : {
+            "$ref" : "#/definitions/ObservationsAtRefTime"
+          }
+        }
+      },
+      "description" : "Data response for observation data."
+    },
+    "ObservationsAtRefTime" : {
+      "type" : "object",
+      "properties" : {
+        "sourceId" : {
+          "type" : "string",
+          "example" : "SN18700",
+          "description" : "The sourceId at which values were observed."
+        },
+        "geometry" : {
+          "description" : "The latitude and longitude at which values were observed (if known).",
+          "$ref" : "#/definitions/Point"
+        },
+        "referenceTime" : {
+          "type" : "string",
+          "example" : "2012-12-24T11:00:00Z",
+          "description" : "The base time at which values were observed (any timeOffset must be added)."
+        },
+        "observations" : {
+          "type" : "array",
+          "description" : "The observed values. This is a map of the form [ElementId (as a String), Observation]",
+          "items" : {
+            "$ref" : "#/definitions/Observation"
+          }
+        }
+      },
+      "description" : "Observations at a single reference time."
+    },
+    "Action" : {
+      "type" : "object"
+    },
+    "ActionAnyContent" : {
+      "type" : "object"
+    },
+    "QualityInformation" : {
+      "type" : "object",
+      "properties" : {
+        "summarized" : {
+          "description" : "Summarized quality.",
+          "$ref" : "#/definitions/UserQualityInformation"
+        },
+        "flag" : {
+          "type" : "string",
+          "example" : "70000",
+          "description" : "The quality code flag."
+        },
+        "details" : {
+          "type" : "array",
+          "description" : "details",
+          "items" : {
+            "$ref" : "#/definitions/TextualQualityInformation"
+          }
+        }
+      },
+      "description" : "Quality information for an observation"
+    },
+    "QualityInformationResponse" : {
+      "type" : "object",
+      "properties" : {
+        "@context" : {
+          "type" : "string",
+          "format" : "url",
+          "example" : "https://frost.met.no/schema",
+          "description" : "The Json-LD context."
+        },
+        "@type" : {
+          "type" : "string",
+          "example" : "ObservationTimeSeriesResponse",
+          "description" : "The object type."
+        },
+        "apiVersion" : {
+          "type" : "string",
+          "example" : "v0",
+          "description" : "The version of the API that generated this response."
+        },
+        "license" : {
+          "type" : "string",
+          "format" : "url",
+          "example" : "https://creativecommons.org/licenses/by/3.0/no/",
+          "description" : "The license that applies to this content."
+        },
+        "createdAt" : {
+          "type" : "string",
+          "example" : "2007-11-06T16:34:41.000Z",
+          "description" : "The time at which this document was created (RFC 3339)."
+        },
+        "queryTime" : {
+          "type" : "string",
+          "example" : "0.025",
+          "description" : "The time, in seconds, that this document took to generate."
+        },
+        "currentItemCount" : {
+          "type" : "integer",
+          "format" : "int64",
+          "example" : 3456,
+          "description" : "The current number of items in this result set."
+        },
+        "itemsPerPage" : {
+          "type" : "integer",
+          "format" : "int64",
+          "example" : 1000,
+          "description" : "The maximum number of items in a result set."
+        },
+        "offset" : {
+          "type" : "integer",
+          "format" : "int64",
+          "example" : 2000,
+          "description" : "The offset of the first item in the result set. The Frost API uses a zero-base index."
+        },
+        "totalItemCount" : {
+          "type" : "integer",
+          "format" : "int64",
+          "example" : 1000,
+          "description" : "The total number of items in this specific result set."
+        },
+        "nextLink" : {
+          "type" : "string",
+          "format" : "url",
+          "example" : "https://frost.met.no/resource/v0.jsonld?param=example_param&offset=3000",
+          "description" : "The next link indicates how more data can be retrieved. It points to the URI to load the next set of data."
+        },
+        "previousLink" : {
+          "type" : "string",
+          "format" : "url",
+          "example" : "https://frost.met.no/resource/v0.jsonld?param=example_param&offset=1000",
+          "description" : "The previous link indicates how more data can be retrieved. It points to the URI to load the previous set of data."
+        },
+        "currentLink" : {
+          "type" : "string",
+          "format" : "url",
+          "example" : "https://frost.met.no/resource/v0.jsonld?param=example_param&offset=2000",
+          "description" : "The current link indicates the URI that was used to generate the current API response"
+        },
+        "data" : {
+          "description" : "Container for all the data from the response.",
+          "$ref" : "#/definitions/QualityInformation"
+        }
+      },
+      "description" : "Data response for observation time series."
+    },
+    "TextualQualityInformation" : {
+      "type" : "object",
+      "properties" : {
+        "controlType" : {
+          "type" : "string",
+          "example" : "Control level passed",
+          "description" : "controlType"
+        },
+        "value" : {
+          "type" : "integer",
+          "format" : "int32",
+          "example" : 3,
+          "description" : "value"
+        },
+        "meaning" : {
+          "type" : "string",
+          "example" : "Time of observation deviates from the norm",
+          "description" : "meaninig"
+        }
+      },
+      "description" : "Textual description of a quality flag"
+    },
+    "UserQualityInformation" : {
+      "type" : "object",
+      "properties" : {
+        "value" : {
+          "type" : "integer",
+          "format" : "int32",
+          "example" : 3,
+          "description" : "value"
+        },
+        "shortMeaning" : {
+          "type" : "string",
+          "example" : "OK",
+          "description" : "shortMeaning"
+        },
+        "meaning" : {
+          "type" : "string",
+          "example" : " Value is slightly uncertain",
+          "description" : "meaninig"
+        }
+      },
+      "description" : "Textual description of a user quality flag"
+    }
+  }
+}

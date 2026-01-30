@@ -1,0 +1,236 @@
+{
+  "metadata": {
+    "side": 1,
+    "sokeStreng": "sok=Bergen&fuzzy=false&utkoordsys=4258&treffPerSide=10&side=1",
+    "totaltAntallTreff": 5,
+    "treffPerSide": 10,
+    "viserFra": 1,
+    "viserTil": 10
+  },
+  "navn": [
+    {
+      "fylker": [
+        {
+          "fylkesnavn": "Vestland",
+          "fylkesnummer": "46"
+        }
+      ],
+      "geojson": {
+        "geometry": {
+          "coordinates": [
+            5.3245,
+            60.39323
+          ],
+          "type": "Point"
+        }
+      },
+      "kommuner": [
+        {
+          "kommunenavn": "Bergen",
+          "kommunenummer": "4601"
+        }
+      ],
+      "navneobjekttype": "By",
+      "oppdateringsdato": "2020-09-29T10:12:12",
+      "representasjonspunkt": {
+        "nord": 60.39323,
+        "øst": 5.3245
+      },
+      "stedsnavn": [
+        {
+          "navnestatus": "hovednavn",
+          "skrivemåte": "Bergen",
+          "skrivemåtestatus": "godkjent og prioritert",
+          "språk": "Norsk",
+          "stedsnavnnummer": 1
+        }
+      ],
+      "stedsnummer": 551660,
+      "stedstatus": "aktiv"
+    },
+    {
+      "fylker": [
+        {
+          "fylkesnavn": "Vestland",
+          "fylkesnummer": "46"
+        }
+      ],
+      "geojson": {
+        "geometry": {
+          "coordinates": [
+            [
+              5.32802,
+              60.392
+            ],
+            [
+              5.32802,
+              60.392
+            ],
+            [
+              5.32221,
+              60.39292
+            ]
+          ],
+          "type": "MultiPoint"
+        }
+      },
+      "kommuner": [
+        {
+          "kommunenavn": "Bergen",
+          "kommunenummer": "4601"
+        }
+      ],
+      "navneobjekttype": "Kommune",
+      "oppdateringsdato": "2020-02-14T23:04:04",
+      "representasjonspunkt": {
+        "nord": 60.392,
+        "øst": 5.32802
+      },
+      "stedsnavn": [
+        {
+          "navnestatus": "hovednavn",
+          "skrivemåte": "Bergen kommune",
+          "skrivemåtestatus": "godkjent og prioritert",
+          "språk": "Norsk",
+          "stedsnavnnummer": 1
+        },
+        {
+          "navnestatus": "undernavn",
+          "skrivemåte": "Bergen",
+          "skrivemåtestatus": "godkjent og prioritert",
+          "språk": "Norsk",
+          "stedsnavnnummer": 2
+        }
+      ],
+      "stedsnummer": 146988,
+      "stedstatus": "aktiv"
+    },
+    {
+      "fylker": [
+        {
+          "fylkesnavn": "Telemark",
+          "fylkesnummer": "40"
+        }
+      ],
+      "geojson": {
+        "geometry": {
+          "coordinates": [
+            8.26429,
+            59.07136
+          ],
+          "type": "Point"
+        }
+      },
+      "kommuner": [
+        {
+          "kommunenavn": "Fyresdal",
+          "kommunenummer": "4032"
+        }
+      ],
+      "navneobjekttype": "Utmark",
+      "oppdateringsdato": "2023-12-29T10:26:26",
+      "representasjonspunkt": {
+        "nord": 59.07136,
+        "øst": 8.26429
+      },
+      "stedsnavn": [
+        {
+          "navnestatus": "hovednavn",
+          "skrivemåte": "Bergen",
+          "skrivemåtestatus": "godkjent og prioritert",
+          "språk": "Norsk",
+          "stedsnavnnummer": 1
+        }
+      ],
+      "stedsnummer": 836487,
+      "stedstatus": "aktiv"
+    },
+    {
+      "fylker": [
+        {
+          "fylkesnavn": "Telemark",
+          "fylkesnummer": "40"
+        }
+      ],
+      "geojson": {
+        "geometry": {
+          "coordinates": [
+            8.92095,
+            59.6111
+          ],
+          "type": "Point"
+        }
+      },
+      "kommuner": [
+        {
+          "kommunenavn": "Hjartdal",
+          "kommunenummer": "4024"
+        }
+      ],
+      "navneobjekttype": "Gard",
+      "oppdateringsdato": "2023-12-29T10:25:25",
+      "representasjonspunkt": {
+        "nord": 59.6111,
+        "øst": 8.92095
+      },
+      "stedsnavn": [
+        {
+          "navnestatus": "hovednavn",
+          "skrivemåte": "Bergen",
+          "skrivemåtestatus": "godkjent og prioritert",
+          "språk": "Norsk",
+          "stedsnavnnummer": 1
+        },
+        {
+          "navnestatus": "hovednavn",
+          "skrivemåte": "Bergene",
+          "skrivemåtestatus": "godkjent",
+          "språk": "Norsk",
+          "stedsnavnnummer": 1
+        }
+      ],
+      "stedsnummer": 592003,
+      "stedstatus": "aktiv"
+    },
+    {
+      "fylker": [
+        {
+          "fylkesnavn": "Østfold",
+          "fylkesnummer": "31"
+        }
+      ],
+      "geojson": {
+        "geometry": {
+          "coordinates": [
+            11.4895,
+            59.41577
+          ],
+          "type": "Point"
+        }
+      },
+      "kommuner": [
+        {
+          "kommunenavn": "Rakkestad",
+          "kommunenummer": "3120"
+        }
+      ],
+      "navneobjekttype": "Annen kulturdetalj",
+      "oppdateringsdato": "2023-12-29T10:19:19",
+      "representasjonspunkt": {
+        "nord": 59.41577,
+        "øst": 11.4895
+      },
+      "stedsnavn": [
+        {
+          "navnestatus": "hovednavn",
+          "skrivemåte": "Bergen",
+          "skrivemåtestatus": "godkjent og prioritert",
+          "språk": "Norsk",
+          "stedsnavnnummer": 1
+        }
+      ],
+      "stedsnummer": 172528,
+      "stedstatus": "aktiv"
+    }
+  ]
+}

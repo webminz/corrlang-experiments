@@ -1,0 +1,846 @@
+{
+  "components": {
+    "schemas": {
+      "Fylker": {
+        "additionalProperties": false,
+        "properties": {
+          "fylkesnavn": {
+            "type": "string"
+          },
+          "fylkesnummer": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "GeoJsonCoords": {
+        "additionalProperties": false,
+        "properties": {
+          "coordinates": {
+            "items": {},
+            "type": "array"
+          },
+          "type": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "GeoJsonGeometry": {
+        "additionalProperties": false,
+        "properties": {
+          "geometry": {
+            "$ref": "#/components/schemas/GeoJsonCoords"
+          }
+        },
+        "type": "object"
+      },
+      "Kommuner": {
+        "additionalProperties": false,
+        "properties": {
+          "kommunenavn": {
+            "type": "string"
+          },
+          "kommunenummer": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "Metadata": {
+        "additionalProperties": false,
+        "properties": {
+          "side": {
+            "default": 1,
+            "description": "Sidenummeret som skal returneres. Minimum 1, maksimum 500.",
+            "maximum": 500,
+            "minimum": 1,
+            "type": "integer"
+          },
+          "sokeStreng": {
+            "description": "Søkestrengen som ble sendt inn til API-et.",
+            "type": "string"
+          },
+          "totaltAntallTreff": {
+            "description": "Antall treff som søket returnerte. Hvis det er et tungt søk er antallet ofte et grovestimat, ikke et nøyaktig antall.",
+            "type": "integer"
+          },
+          "treffPerSide": {
+            "default": 10,
+            "description": "Antall treff per side. Minimum 1, maksimum 500.",
+            "maximum": 500,
+            "minimum": 1,
+            "type": "integer"
+          },
+          "utkoordsys": {
+            "default": 4258,
+            "description": "Angi det koordinatsystemet som du ønsker at geometrien i returen skal transformeres til, oppgis som en SRID (altså tallene i en EPSG-kode, f.eks. 4258 eller 25833). Standard er 4258.",
+            "maximum": 99999,
+            "minimum": 0,
+            "type": "integer"
+          },
+          "viserFra": {
+            "description": "Viser treff fra og medobjekt nummer X i responsen.",
+            "type": "integer"
+          },
+          "viserTil": {
+            "description": "Viser treff til og med objekt nummer X i responsen.",
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "Navneobjekttype": {
+        "additionalProperties": false,
+        "properties": {
+          "navneobjekttype": {
+            "description": "Objekttypen som et sted kan tilhøre, f.eks en by, elv eller kirke",
+            "type": "string"
+          },
+          "navneobjekttypekode": {
+            "description": "",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "Punkt": {
+        "additionalProperties": false,
+        "properties": {
+          "meterFraPunkt": {
+            "description": "Distanse i meter til punktet det ble søkt etter.",
+            "type": "integer"
+          },
+          "navneobjekttype": {
+            "description": "Objekttypen som et sted kan tilhøre, f.eks en by, elv eller kirke",
+            "type": "string"
+          },
+          "representasjonspunkt": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Representasjonspunkt"
+              }
+            ],
+            "description": "Et konstruert representasjonspunkt for stedsnavnet."
+          },
+          "stedsnavn": {
+            "items": {
+              "$ref": "#/components/schemas/SkrivemateJson"
+            },
+            "type": "array"
+          },
+          "stedsnummer": {
+            "description": "Identifikator for et sted.",
+            "type": "integer"
+          },
+          "stedstatus": {
+            "description": "Status for selve stedet. Et sted kan være et relikt (historisk), aktivt eller planlagt sted. En kommune som ikke lenger eksisterer er f.eks. relikt, mens en bru som skal bygges er planlagt.",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "Representasjonspunkt": {
+        "additionalProperties": false,
+        "properties": {
+          "koordsys": {
+            "default": 4258,
+            "description": "Koordinatsystemet til representasjonspunktet.",
+            "type": "integer"
+          },
+          "nord": {
+            "description": "",
+            "type": "number"
+          },
+          "øst": {
+            "description": "",
+            "type": "number"
+          }
+        },
+        "type": "object"
+      },
+      "ReturPunkt": {
+        "additionalProperties": false,
+        "properties": {
+          "metadata": {
+            "$ref": "#/components/schemas/Metadata"
+          },
+          "navn": {
+            "items": {
+              "$ref": "#/components/schemas/Punkt"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "ReturSkrivemate": {
+        "additionalProperties": false,
+        "properties": {
+          "metadata": {
+            "$ref": "#/components/schemas/Metadata"
+          },
+          "navn": {
+            "items": {
+              "$ref": "#/components/schemas/Skrivemate"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "ReturSted": {
+        "additionalProperties": false,
+        "properties": {
+          "metadata": {
+            "$ref": "#/components/schemas/Metadata"
+          },
+          "navn": {
+            "items": {
+              "$ref": "#/components/schemas/Sok"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "Skrivemate": {
+        "additionalProperties": false,
+        "properties": {
+          "fylker": {
+            "items": {
+              "$ref": "#/components/schemas/Fylker"
+            },
+            "type": "array"
+          },
+          "kommuner": {
+            "items": {
+              "$ref": "#/components/schemas/Kommuner"
+            },
+            "type": "array"
+          },
+          "navneobjekttype": {
+            "description": "Objekttypen som et sted kan tilhøre, f.eks en by, elv eller kirke",
+            "type": "string"
+          },
+          "navnestatus": {
+            "description": "Angir statusen til navnet, f.eks. om det er et hovednavn eller sidenavn.",
+            "type": "string"
+          },
+          "representasjonspunkt": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Representasjonspunkt"
+              }
+            ],
+            "description": "Et konstruert representasjonspunkt for stedsnavnet."
+          },
+          "skrivemåte": {
+            "description": "En spesifikk måte å skrive et stedsnavn på.",
+            "type": "string"
+          },
+          "skrivemåtestatus": {
+            "description": "Hvilken status denne skrivemåten har, f.eks. om den er historisk eller godkjent.",
+            "type": "string"
+          },
+          "språk": {
+            "description": "Språket til skrivemåten/navnet.",
+            "type": "string"
+          },
+          "stedsnummer": {
+            "description": "Identifikator for et sted.",
+            "type": "integer"
+          },
+          "stedstatus": {
+            "description": "Status for selve stedet. Et sted kan være et relikt (historisk), aktivt eller planlagt sted. En kommune som ikke lenger eksisterer er f.eks. relikt, mens en bru som skal bygges er planlagt.",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "SkrivemateJson": {
+        "additionalProperties": false,
+        "properties": {
+          "navnestatus": {
+            "description": "Angir statusen til navnet, f.eks. om det er et hovednavn eller sidenavn.",
+            "type": "string"
+          },
+          "skrivemåte": {
+            "description": "En spesifikk måte å skrive et stedsnavn på.",
+            "type": "string"
+          },
+          "skrivemåtestatus": {
+            "description": "Hvilken status denne skrivemåten har, f.eks. om den er historisk eller godkjent.",
+            "type": "string"
+          },
+          "språk": {
+            "description": "Språket til skrivemåten/navnet.",
+            "type": "string"
+          },
+          "stedsnavnnummer": {
+            "description": "Et sted kan ha flere stedsnavn, dette er identifikatoren til stedsnavnet.",
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "Sok": {
+        "additionalProperties": false,
+        "properties": {
+          "fylker": {
+            "items": {
+              "$ref": "#/components/schemas/Fylker"
+            },
+            "type": "array"
+          },
+          "geojson": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/GeoJsonGeometry"
+              }
+            ],
+            "description": "Stedsnavnet sin fullstendige geometri i en geojson-struktur."
+          },
+          "kommuner": {
+            "items": {
+              "$ref": "#/components/schemas/Kommuner"
+            },
+            "type": "array"
+          },
+          "navneobjekttype": {
+            "description": "Objekttypen som et sted kan tilhøre, f.eks en by, elv eller kirke",
+            "type": "string"
+          },
+          "oppdateringsdato": {
+            "description": "Det som vises er den nyeste av de tre oppdateringsdatoene for stedet, skrivemåten og stedsnavnet.",
+            "format": null,
+            "pattern": null,
+            "type": "string"
+          },
+          "representasjonspunkt": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Representasjonspunkt"
+              }
+            ],
+            "description": "Et konstruert representasjonspunkt for stedsnavnet."
+          },
+          "stedsnavn": {
+            "items": {
+              "$ref": "#/components/schemas/SkrivemateJson"
+            },
+            "type": "array"
+          },
+          "stedsnummer": {
+            "description": "Identifikator for et sted.",
+            "type": "integer"
+          },
+          "stedstatus": {
+            "description": "Status for selve stedet. Et sted kan være et relikt (historisk), aktivt eller planlagt sted. En kommune som ikke lenger eksisterer er f.eks. relikt, mens en bru som skal bygges er planlagt.",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "Sprak": {
+        "additionalProperties": false,
+        "properties": {
+          "språk": {
+            "description": "Språket til skrivemåten/navnet.",
+            "type": "string"
+          },
+          "språkkode": {
+            "description": "",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      }
+    }
+  },
+  "info": {
+    "description": "\nAPI for søk etter stedsnavn. Man kan for eksempel søke etter et navn, et sted (et sted kan ha flere navn) eller steder i nærheten av et punkt.\nAPIet returnerer kun de første 5000 resultatene.\n\nDet er ikke nødvendig med innlogging/autorisasjon for å bruke APIet.\n\nMedio desember 2023 ble APIet flyttet til et nytt endepunkt som er tilgjengelig på <a href=\"https://api.kartverket.no/stedsnavn/v1\">https://api.kartverket.no/stedsnavn/v1</a>.\nDet tidligere endepunktet <a href=\"https://ws.geonorge.no/stedsnavn/v1\">https://ws.geonorge.no/stedsnavn/v1</a> vil være tilgjengelig inntil videre, og vil fungere som en proxy til det nye endepunktet.\nVi anbefaler likevel å bytte til det nye endepunktet.\n\nStørre eller ikke-kompatible endringer i APIet vil bli annonsert med minst 3 måneder forvarsel på <a href=\"https://status.kartverket.no\">https://status.kartverket.no</a>.\n    ",
+    "title": "Kartverkets åpne API for søk etter stedsnavn",
+    "version": "1.1"
+  },
+  "openapi": "3.0.3",
+  "paths": {
+    "/navn": {
+      "get": {
+        "description": "Søk etter et spesifikt navn (skrivemåte/stedsnavn). Returen er sortert etter stedets kategorisering innenfor Sentralt stedsnavnsregister (et fylke kommer f.eks. før en bekk). Innenfor hver kategori er så returen sortert etter hvor godt det matcher søkebegrepet. <p>For eksempel ?sok=Trondheim*&fuzzy=false</p>",
+        "parameters": [
+          {
+            "description": "Søk etter stedsnavn. Støtter wildcard-søk (*)",
+            "in": "query",
+            "name": "sok",
+            "required": false,
+            "schema": {
+              "maxLength": 100,
+              "minLength": 1,
+              "type": "string"
+            }
+          },
+          {
+            "description": "Sett til \"true\" for å utføre et fuzzy-søk. Søket vil da prøve å finne alle navn som ligner på det du søker etter. Treffene vil sorteres etter hvor mye de ligner på søkebegrepet. Kan være litt tregere enn et vanlig søk.",
+            "in": "query",
+            "name": "fuzzy",
+            "required": false,
+            "schema": {
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "description": "Søk innenfor et fylkesnummer. Bestående av two tegn med ledende 0 om nødvendig. Kan søke i flere fylker ved å gjenta parameteret, f.eks. fnr=50&fnr=03",
+            "explode": true,
+            "in": "query",
+            "name": "fnr",
+            "required": false,
+            "schema": {
+              "items": {
+                "description": "Fylkesnummer bestående av two tegn med ledende 0 om nødvendig",
+                "maxLength": 2,
+                "minLength": 2,
+                "pattern": "^[0123456789]*$",
+                "type": "string"
+              },
+              "maxItems": 10,
+              "minItems": 0,
+              "type": "array"
+            },
+            "style": "form"
+          },
+          {
+            "description": "Søk innenfor en kommune ved å skrive inn kommunenummeret. Bestående av fire tegn med ledende 0 om nødvendig. Kan søke i flere kommuner ved å gjenta parameteret, f.eks. knr=5001&knr=0301",
+            "explode": true,
+            "in": "query",
+            "name": "knr",
+            "required": false,
+            "schema": {
+              "items": {
+                "description": "Kommunenummer bestående av fire tegn med ledende 0 om nødvendig.",
+                "maxLength": 4,
+                "minLength": 4,
+                "pattern": "^[0123456789]*$",
+                "type": "string"
+              },
+              "maxItems": 10,
+              "minItems": 0,
+              "type": "array"
+            },
+            "style": "form"
+          },
+          {
+            "description": "Søk etter treff i kommunen med oppgitt navn. Vær obs på at flere kommuner har samme navn, det anbefales derfor å søke etter kommunenummer hvis mulig.",
+            "in": "query",
+            "name": "kommunenavn",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Søk etter treff i fylket med oppgitt navn.",
+            "in": "query",
+            "name": "fylkesnavn",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filtrer skrivemåte etter språk, vis kun de skrivemåtene som er i det angitte språk. Se i \"/sprak\"-endepunktet for å se mulige valg for språkkoder.",
+            "in": "query",
+            "name": "sprak",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Angi det koordinatsystemet som du ønsker at geometrien i returen skal transformeres til, oppgis som en SRID (altså tallene i en EPSG-kode, f.eks. 4258 eller 25833). Standard er 4258.",
+            "in": "query",
+            "name": "utkoordsys",
+            "required": false,
+            "schema": {
+              "default": 4258,
+              "maximum": 99999,
+              "minimum": 0,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Antall treff per side. Minimum 1, maksimum 500.",
+            "in": "query",
+            "name": "treffPerSide",
+            "required": false,
+            "schema": {
+              "default": 10,
+              "maximum": 500,
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Sidenummeret som skal returneres. Minimum 1, maksimum 500.",
+            "in": "query",
+            "name": "side",
+            "required": false,
+            "schema": {
+              "default": 1,
+              "maximum": 500,
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Vis kun de elementene du vil ha i returen. Kommaseparert liste med nøkler. For å hente ut underobjekter bruk \".\"-notasjon, f.eks. &filtrer=navn.stedsnummer,metadata",
+            "in": "query",
+            "name": "filtrer",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReturSkrivemate"
+                }
+              }
+            },
+            "description": "ok"
+          }
+        },
+        "summary": "Søk etter et spesifikt navn (skrivemåte/stedsnavn)."
+      }
+    },
+    "/navneobjekttyper": {
+      "get": {
+        "description": "Vis alle navneobjekttyper (f.eks by, elv, kirke) som et sted kan ha. Man kan filtrere på navneobjekttypekoder i noen søk, dette er en oversikt over de gyldige alternativene.",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/Navneobjekttype"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "ok"
+          }
+        },
+        "summary": "Vis alle navneobjekttyper (f.eks by, elv, kirke) som et sted kan ha."
+      }
+    },
+    "/punkt": {
+      "get": {
+        "description": "Gjør et geografisk søk etter de nærmeste stedene. Vær obs på at et sted kan ha flere stedsnavn og at hvert stedsnavn kan ha flere likestilte skrivemåter. Returen er sortert etter stedets kategorisering innenfor Sentralt stedsnavnsregister slik at det mest \"nærliggende\" stedet kommer først (en bekk kommer f.eks. før et fylke). Innenfor hver kategori er så returen sortert etter distanse til punktet som man søkte etter.  <p>For eksempel ?nord=60.5&ost=11.12&koordsys=4258&radius=1000</p>",
+        "parameters": [
+          {
+            "description": "Nord-koordinaten/Latitude",
+            "in": "query",
+            "name": "nord",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "description": "Øst-koordinaten/Longitude",
+            "in": "query",
+            "name": "ost",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "description": "Koordinatsystemet (EPSG) til koordinatene du søker med. Angis som en SRID, for eksempel 4258 eller 25833.",
+            "in": "query",
+            "name": "koordsys",
+            "required": true,
+            "schema": {
+              "maximum": 999999,
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Radius i antall meter som søket leter etter stedsnavn i. Maksimum er 5000m.",
+            "in": "query",
+            "name": "radius",
+            "required": false,
+            "schema": {
+              "default": 500,
+              "maximum": 5000,
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Angi det koordinatsystemet som du ønsker at geometrien i returen skal transformeres til, oppgis som en SRID (altså tallene i en EPSG-kode, f.eks. 4258 eller 25833). Standard er 4258.",
+            "in": "query",
+            "name": "utkoordsys",
+            "required": false,
+            "schema": {
+              "default": 4258,
+              "maximum": 99999,
+              "minimum": 0,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Antall treff per side. Minimum 1, maksimum 500.",
+            "in": "query",
+            "name": "treffPerSide",
+            "required": false,
+            "schema": {
+              "default": 10,
+              "maximum": 500,
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Sidenummeret som skal returneres. Minimum 1, maksimum 500.",
+            "in": "query",
+            "name": "side",
+            "required": false,
+            "schema": {
+              "default": 1,
+              "maximum": 500,
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Vis kun de elementene du vil ha i returen. Kommaseparert liste med nøkler. For å hente ut underobjekter bruk \".\"-notasjon, f.eks. &filtrer=navn.stedsnummer,metadata",
+            "in": "query",
+            "name": "filtrer",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReturPunkt"
+                }
+              }
+            },
+            "description": "ok"
+          }
+        },
+        "summary": "Finn steder nær et gitt geografisk punkt."
+      }
+    },
+    "/sprak": {
+      "get": {
+        "description": "Man kan filtrere på språkkoder i noen søk, dette er en oversikt over de gyldige alternativene.",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/Sprak"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "ok"
+          }
+        },
+        "summary": "Vis alle språk som et navn kan ha."
+      }
+    },
+    "/sted": {
+      "get": {
+        "description": "Søk etter et sted. Et sted kan ha flere stedsnavn, hvert navn kan ha flere skrivemåter. Returen er sortert etter stedets kategorisering innenfor Sentralt stedsnavnsregister (et fylke kommer f.eks. før en bekk). Innenfor hver kategori er så returen sortert etter hvor godt det matcher søkebegrepet. <p>For eksempel ?sok=Trondheim*&knr=5001</p>",
+        "parameters": [
+          {
+            "description": "Søk etter stedsnavn. Støtter wildcard-søk (*)",
+            "in": "query",
+            "name": "sok",
+            "required": false,
+            "schema": {
+              "maxLength": 100,
+              "minLength": 1,
+              "type": "string"
+            }
+          },
+          {
+            "description": "Sett til \"true\" for å utføre et fuzzy-søk. Søket vil da prøve å finne alle navn som ligner på det du søker etter. Treffene vil sorteres etter hvor mye de ligner på søkebegrepet. Kan være litt tregere enn et vanlig søk.",
+            "in": "query",
+            "name": "fuzzy",
+            "required": false,
+            "schema": {
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "description": "Søk innenfor et fylkesnummer. Bestående av two tegn med ledende 0 om nødvendig. Kan søke i flere fylker ved å gjenta parameteret, f.eks. fnr=50&fnr=03",
+            "explode": true,
+            "in": "query",
+            "name": "fnr",
+            "required": false,
+            "schema": {
+              "items": {
+                "description": "Fylkesnummer bestående av two tegn med ledende 0 om nødvendig",
+                "maxLength": 2,
+                "minLength": 2,
+                "pattern": "^[0123456789]*$",
+                "type": "string"
+              },
+              "maxItems": 10,
+              "minItems": 0,
+              "type": "array"
+            },
+            "style": "form"
+          },
+          {
+            "description": "Søk innenfor en kommune ved å skrive inn kommunenummeret. Bestående av fire tegn med ledende 0 om nødvendig. Kan søke i flere kommuner ved å gjenta parameteret, f.eks. knr=5001&knr=0301",
+            "explode": true,
+            "in": "query",
+            "name": "knr",
+            "required": false,
+            "schema": {
+              "items": {
+                "description": "Kommunenummer bestående av fire tegn med ledende 0 om nødvendig.",
+                "maxLength": 4,
+                "minLength": 4,
+                "pattern": "^[0123456789]*$",
+                "type": "string"
+              },
+              "maxItems": 10,
+              "minItems": 0,
+              "type": "array"
+            },
+            "style": "form"
+          },
+          {
+            "description": "Søk etter treff i kommunen med oppgitt navn. Vær obs på at flere kommuner har samme navn, det anbefales derfor å søke etter kommunenummer hvis mulig.",
+            "in": "query",
+            "name": "kommunenavn",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Søk etter treff i fylket med oppgitt navn.",
+            "in": "query",
+            "name": "fylkesnavn",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Finn stedsnavn med et gitt stedsnummer.",
+            "in": "query",
+            "name": "stedsnummer",
+            "required": false,
+            "schema": {
+              "maximum": 10000000,
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Filtrer returen etter navneobjekttypekode, viser kun de forekomstene som har angitt navneobjekttype. Sjekk endepunktet /navneobjekttyper for å se mulige valg for navneobjekttypekoder. Det er mulig å filtrere på flere navneobjekttypekoder ved å gjenta parameteret.",
+            "explode": true,
+            "in": "query",
+            "name": "navneobjekttype",
+            "required": false,
+            "schema": {
+              "items": {
+                "type": "string"
+              },
+              "maxItems": 10,
+              "minItems": 0,
+              "type": "array"
+            },
+            "style": "form"
+          },
+          {
+            "description": "Angi det koordinatsystemet som du ønsker at geometrien i returen skal transformeres til, oppgis som en SRID (altså tallene i en EPSG-kode, f.eks. 4258 eller 25833). Standard er 4258.",
+            "in": "query",
+            "name": "utkoordsys",
+            "required": false,
+            "schema": {
+              "default": 4258,
+              "maximum": 99999,
+              "minimum": 0,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Antall treff per side. Minimum 1, maksimum 500.",
+            "in": "query",
+            "name": "treffPerSide",
+            "required": false,
+            "schema": {
+              "default": 10,
+              "maximum": 500,
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Sidenummeret som skal returneres. Minimum 1, maksimum 500.",
+            "in": "query",
+            "name": "side",
+            "required": false,
+            "schema": {
+              "default": 1,
+              "maximum": 500,
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Vis kun de elementene du vil ha i returen. Kommaseparert liste med nøkler. For å hente ut underobjekter bruk \".\"-notasjon, f.eks. &filtrer=navn.stedsnummer,metadata",
+            "in": "query",
+            "name": "filtrer",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReturSted"
+                }
+              }
+            },
+            "description": "ok"
+          }
+        },
+        "summary": "Søk etter et sted. Et sted kan ha flere navn og hvert navn kan ha flere skrivemåter."
+      }
+    }
+  },
+  "servers": [
+    {
+      "url": "https://api.kartverket.no/stedsnavn/v1"
+    }
+  ]
+}

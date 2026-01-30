@@ -1,0 +1,36 @@
+{
+  "@context" : "https://frost.met.no/schema",
+  "@type" : "SourceResponse",
+  "apiVersion" : "v0",
+  "license" : "https://creativecommons.org/licenses/by/3.0/no/",
+  "createdAt" : "2026-01-21T14:16:00Z",
+  "queryTime" : 1.619,
+  "currentItemCount" : 1,
+  "itemsPerPage" : 1,
+  "offset" : 0,
+  "totalItemCount" : 1,
+  "currentLink" : "https://frost.met.no/sources/v0.jsonld?geometry=nearest(POINT(5.3245%2060.39323))",
+  "data" : [ {
+    "@type" : "SensorSystem",
+    "id" : "SN50539",
+    "name" : "BERGEN - FLORIDA UIB",
+    "shortName" : "Bergen (UiB)",
+    "country" : "Norge",
+    "countryCode" : "NO",
+    "geometry" : {
+      "@type" : "Point",
+      "coordinates" : [ 5.332, 60.3837 ],
+      "nearest" : false
+    },
+    "distance" : 1.13699033872,
+    "masl" : 46,
+    "validFrom" : "2003-06-18T00:00:00.000Z",
+    "county" : "VESTLAND",
+    "countyId" : 46,
+    "municipality" : "BERGEN",
+    "municipalityId" : 4601,
+    "ontologyId" : 3,
+    "stationHolders" : [ "BERGEN KOMMUNE" ],
+    "externalIds" : [ "10.249.1.50" ]
+  } ]
+}
