@@ -1,0 +1,23 @@
+endpoint Sales : SERVICE {
+     tech: GRAPH_QL;
+     schema: sales.graphql
+     url: <https://example.org>;
+}
+endpoint Invoices : SERVICE {
+    tech: GRAPH_QL
+    schema: invoices.graphql
+    url: <https://example.org>;
+}
+endpoint HR : SERVICE {
+    tech: GRAPH_QL;
+    schema: hr.graphql
+    url: <https://example.org>;
+}
+
+correspondence Experiment0 (Sales, Invoices, HR) {
+
+    identify (Sales.Query,Invoices.Query,HR.Query) as Query;
+    identify (Sales.Mutation, Invoices.Mutation, HR.Mutation) as Mutation;
+
+}
+
