@@ -40,7 +40,21 @@ corrl status
 
 Once, `corrl` and the deamon are installed, you can set up the experiments by running the attached script:
 
+On Linux/MacOS:
+
 ```shell
 chmod +x run.sh
 ./run.sh
 ```
+
+On Windows:
+```ps1
+.\run.ps1
+```
+
+
+When you see three times 
+
+> Wrote schema to ...
+
+everything is set-up and you are ready to start with [the first experiment](./experiment_0/README.md).
