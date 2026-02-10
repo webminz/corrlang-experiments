@@ -1,0 +1,31 @@
+@startuml
+set namespaceSeparator ::
+hide circle
+class Left::AccountOwner {
+   Birthdate : Left::date [1..1]
+   Name : Left::string [1..1]
+   TaxExempt : Left::boolean [1..1]
+}
+
+class Left::Address {
+   City : Left::string [1..1]
+   State : Left::string [1..1]
+   Street : Left::string [1..1]
+   ZIP : Left::string [1..1]
+}
+
+class Right::Customer {
+   CPhone : Right::string [1..1]
+   Cname : Right::string [1..1]
+}
+
+class Right::CustomerAddress {
+   City : Right::string [1..1]
+   PostalCode : Right::string [1..1]
+   Street : Right::string [1..1]
+   USState : Right::string [1..1]
+}
+
+Left::AccountOwner *--> "1..1" Left::Address : Address
+Right::Customer *--> "1..1" Right::CustomerAddress : CAddress
+@enduml

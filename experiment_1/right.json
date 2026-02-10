@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/schemas/SchemaM2",
+  "title": "Schema M2",
+  "description": "A bundle containing definitions for CustomerAddress and Customer.",
+  "$defs": {
+    "CustomerAddress": {
+      "title": "CustomerAddress",
+      "$id": "https://example.com/schemas/CustomerAddress",
+      "type": "object",
+      "properties": {
+        "Street": { "type": "string" },
+        "City": { "type": "string" },
+        "USState": { "type": "string" },
+        "PostalCode": { "type": "string" }
+      },
+      "required": ["Street", "City", "USState", "PostalCode"],
+      "additionalProperties": false
+    },
+    "Customer": {
+      "title": "Customer",
+      "$id": "https://example.com/schemas/Customer",
+      "type": "object",
+      "properties": {
+        "Cname": { "type": "string" },
+        "CAddress": {  
+          "$ref": "https://example.com/schemas/CustomerAddress" 
+        },
+        "CPhone": { "type": "string" }
+      },
+      "required": ["Cname", "CAddress", "CPhone"],
+      "additionalProperties": false
+    }
+  }
+}

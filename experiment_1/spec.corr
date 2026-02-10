@@ -1,0 +1,18 @@
+endpoint Left : DATA {
+    tech: JSON;
+    schema: "left.json";
+}
+
+endpoint Right : DATA {
+    tech: JSON;
+    schema: "right.json";
+}
+
+correspondence Experiment_1 (Left, Right) {
+    
+}
+
+view Show_Experiment_1(Experiment_1) : DATA {
+    tech: PUML;
+    schema: "merged.puml";
+}

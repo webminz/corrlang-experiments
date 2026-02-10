@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/schemas/SchemaM1",
+  "title": "Schema M1",
+  "description": "A bundle of schemas representing Address and AccountOwner entities.",
+  "$defs": {
+    "Address": {
+      "title": "Address",
+      "$id": "https://example.com/schemas/Address",
+      "type": "object",
+      "properties": {
+        "Street": { "type": "string" },
+        "City": { "type": "string" },
+        "State": { "type": "string" },
+        "ZIP": { "type": "string" }
+      },
+      "required": ["Street", "City", "State", "ZIP"],
+      "additionalProperties": false
+    },
+    "AccountOwner": {
+      "title": "AccountOwner",
+      "$id": "https://example.com/schemas/AccountOwner",
+      "type": "object",
+      "properties": {
+        "Name": { "type": "string" },
+        "Address": { 
+          "$ref": "https://example.com/schemas/Address" 
+        },
+        "Birthdate": { 
+          "type": "string",
+          "format": "date"
+        },
+        "TaxExempt": { 
+          "type": "boolean" 
+        }
+      },
+      "required": ["Name", "Address", "Birthdate", "TaxExempt"],
+      "additionalProperties": false
+    }
+  }
+}

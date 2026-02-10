@@ -1,0 +1,18 @@
+endpoint Contracts : DATA {
+    tech: JSON;
+    schema: "schemas/contracts.json";
+}
+
+endpoint Customers : DATA {
+    tech: JSON;
+    schema: "schemas/customers.json";
+}
+
+correspondence Experiment_2 (Customers, Contracts) {
+
+}
+
+view Show_Experiment_2 (Experiment_2) : DATA {
+    tech: PUML;
+    schema: "merged.puml";
+}
