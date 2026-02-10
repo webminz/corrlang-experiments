@@ -1,11 +1,13 @@
 endpoint Contracts : DATA {
-    tech: JSON;
-    schema: "schemas/contracts.json";
+    tech: CSV;
+    schema: ("schemas/contracts.json", JSON);
+    file: "./data/contracts.csv"
 }
 
 endpoint Customers : DATA {
-    tech: JSON;
-    schema: "schemas/customers.json";
+    tech: CSV;
+    schema: ("schemas/customers.json", JSON);
+    file: "./data/customers.csv"
 }
 
 correspondence Experiment_2 (Customers, Contracts) {
