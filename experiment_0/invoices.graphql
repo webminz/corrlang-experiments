@@ -25,14 +25,6 @@ type Invoice {
 
 type Mutation {
     createClient(name: String): Client
-    setAddress(
-        client: ID!
-        street: String
-        city: String
-        postalCode: String
-        state: String
-        Country: String
-    ): Client
     setPaymentDetails(
         client: ID!
         iban: String

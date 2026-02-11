@@ -53,8 +53,9 @@ On Windows:
 ```
 
 
-When you see three times 
+When you see three times something like 
 
-> Wrote schema to ...
+> Wrote schema to '...' using 'PUML'
 
-everything is set-up and you are ready to start with [the first experiment](./experiment_0/README.md).
+at the end of your command line prompt, everything is set-up and you
+are ready to start with [the first experiment](./experiment_0/README.md).

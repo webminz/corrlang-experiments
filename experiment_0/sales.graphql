@@ -47,14 +47,6 @@ type PurchaseItem {
 type Mutation {
     createCustomer(name: String!, email: String): Customer!
     updateCustomer(customer: ID!, name: String, email: String): Customer
-    setAddress(
-        customer: ID!
-        street: String
-        city: String
-        postalCode: String
-        state: String
-        country: String
-    ): Customer
     deleteCustomer(customer: ID!): Customer
     createPurchase(customer: ID!, date: String!, store: ID!): Purchase
     addPurchaseItem(purchase: ID!, product: ID!, quantity: Int): PurchaseItem
