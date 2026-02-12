@@ -11,6 +11,12 @@ Simply download the archive that matches your operating system, extract it, and 
 The CLI can download the CorrLang deamon (a.k.a. core service) automatically and can manage it's lifecycle.
 However, make sure to have a _Java_  virtual machine in at least version 21 installed.
 
+> [!TIP]
+> Sometimes, if you have many java versions installed at the same time, it may happen
+> that you have set you `$JAVA_HOME` envrionment variable and it is poitining to 
+> an old Java version. In this case, you have to set your envrionment variable such that
+> it points to a Java with version greater than `21` (i.e. class file version >= `65`).
+
 Also, we recommend to have [PlantUML](https://plantuml.com/starting) ready which can [dowloaded as a .jar file from their website](https://github.com/plantuml/plantuml/releases/download/v1.2026.1/plantuml-mit-1.2026.1.jar).
 PlantUML will render the generated `merged.puml` files for you. 
 You can start it in Gui mode by running:
@@ -52,6 +58,15 @@ On Windows:
 .\run.ps1
 ```
 
+> [!NOTE]
+> For those Windows users that get an error about that "script execution is not allowed", you willl
+> have to run 
+>
+>```ps1
+>Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope Process
+>```
+>which will enable script execution for your current powershell session (requires admin privileges).
+
 
 When you see three times something like 
 
@@ -59,3 +74,8 @@ When you see three times something like
 
 at the end of your command line prompt, everything is set-up and you
 are ready to start with [the first experiment](./experiment_0/README.md).
+
+> [!WARNING]
+> It might happen that running the `run.sh` script results in being `null` printed three 
+> times to the command line (observed on Linux and Mac OS recently). In this case
+> you have to run the contents of the script manually in your shell.
